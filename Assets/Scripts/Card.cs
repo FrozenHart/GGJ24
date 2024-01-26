@@ -4,41 +4,42 @@ using UnityEngine;
 
 public class Card 
 {
-    private string name;
-    private int mana_cost;
-    private List<Efects> efects;
-    private int Laugh_power;
+    private string Name;
+    private int ManaCost;
+    private List<Effects> Effects;
+    private int LaughPower;
     private string Description;
 
-    public Card(string name,int mana_cost,List<Efects> efects, int Laugh_power,string Description)
+    public Card(string name, int manaCost, List<Effects> effects, int laughPower, string description)
     {
-        this.name = name;
-        this.efects = efects;
-        this.mana_cost = mana_cost;
-        this.Laugh_power = Laugh_power;
-        this.Description = Description;
-    }
-    public string get_name()
-    {
-        return name;
+        Name = name;
+        Effects = effects;
+        ManaCost = manaCost;
+        LaughPower = laughPower;
+        Description = description;
     }
 
-    public int get_mana_cost()
+    public string GetName()
     {
-        return mana_cost;
+        return Name;
     }
 
-    public List<Efects> get_efects()
+    public int GetManaCost()
     {
-        return efects;
+        return ManaCost;
     }
 
-    public int get_Laugh_power()
+    public List<Effects> GetEffects()
+    {
+        return Effects;
+    }
+
+    public int GetLaughPower()
     { 
-        return Laugh_power;
+        return LaughPower;
     }
 
-    public string get_Description()
+    public string GetDescription()
     {
         return Description;
     }

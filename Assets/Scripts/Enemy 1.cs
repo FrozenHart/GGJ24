@@ -6,7 +6,7 @@ public class Enemy1 : MonoBehaviour
 {
     [SerializeField]
     private int Boringness = 100; // aka life
-    private List<Efects> efects;
+    private List<Effects> Effects;
 
     // Start is called before the first frame update
     void Start()
