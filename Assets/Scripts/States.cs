@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class States : MonoBehaviour
 {
-    [SerializeField] private GameObject MainMenu, Level1, Level2, Level3, Level4, Level5, Level6, Level7, inventory;
+    [SerializeField] private GameObject MainMenu, Level1, Level2, Level3, Level4, Level5, Level6, Level7, Inventory, Shop;
     // Start is called before the first frame update
     void Start()
     {
