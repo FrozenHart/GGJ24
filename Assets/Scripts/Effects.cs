@@ -4,5 +4,10 @@ using UnityEngine;
 
 public enum Effects 
 {
-    
+    Banana,
+    Inteligente,
+    Negro,
+    x,
+    y,
+    z,
 }
