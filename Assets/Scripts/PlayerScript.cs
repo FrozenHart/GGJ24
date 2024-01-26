@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
-    private int Mana = 7;
-    private List<string> Hand = new List<string>();
-    private Dictionary<string, Card> Inventory = new Dictionary<string,Card>();
-    private List<string> Deck = new List<string>();
-    private List<Effects> Effects = new List<Effects>();
+    private int mana = 7;
+    private List<string> hand = new List<string>();
+    private Dictionary<string, Card> inventory = new Dictionary<string,Card>();
+    private List<string> deck = new List<string>();
+    private List<Effects> effects = new List<Effects>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +27,9 @@ public class PlayerScript : MonoBehaviour
     {
         for (int i = 0; i < numberOfCards; i++)
         {
-            int cardNumber = Random.Range(0, Deck.Count - 1);
-            Hand.Add(Deck[cardNumber]);
-            Deck.RemoveAt(cardNumber);
+            int cardNumber = Random.Range(0, deck.Count - 1);
+            hand.Add(deck[cardNumber]);
+            deck.RemoveAt(cardNumber);
         }
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy1 : MonoBehaviour
 {
     [SerializeField]
-    private int Boringness = 100; // aka life
-    private List<Effects> Effects;
+    private int boringness = 100; // aka life
+    private List<Effects> effects;
 
     // Start is called before the first frame update
     void Start()
