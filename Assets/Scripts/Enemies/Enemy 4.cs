@@ -7,8 +7,8 @@ public class Enemy4 : MonoBehaviour
 {
     [SerializeField]
     private float boringness = 0.50f;
-    private List<HumourType> Likes = new List<HumourType>() { HumourType.Banana, HumourType.z };
-    private List<HumourType> DisLike = new List<HumourType>() { HumourType.Dark };
+    private List<HumourType> Likes = new List<HumourType>() { HumourType.Dark, HumourType.x };
+    private List<HumourType> DisLike = new List<HumourType>() { HumourType.Intelligent };
     public Slider LaghBar;
 
     // Start is called before the first frame update
@@ -22,7 +22,22 @@ public class Enemy4 : MonoBehaviour
     { 
         LaghBar.value = boringness;
     }
-
+    public void Action(Card card)
+    {
+        int LaughPower = card.GetLaughPower();
+        foreach (HumourType card_humor in card.GetEffects())
+        {
+            if (Likes.Contains(card_humor))
+            {
+                LaughPower++;
+            }
+            else if (DisLike.Contains(card_humor))
+            {
+                LaughPower--;
+            }
+        }
+        boringness += LaughPower;
+    }
     public void SetSlider(Slider slider)
     {
         LaghBar = slider;

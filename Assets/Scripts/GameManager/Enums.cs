@@ -11,6 +11,4 @@ public enum HumourType
     Intelligent,
     Dark,
     x,
-    y,
-    z,
 }
