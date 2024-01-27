@@ -57,4 +57,8 @@ public class States : MonoBehaviour
         SceneManager.LoadSceneAsync("Shop");
     }
 
+    public void MainMenu_OnClick()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
 }
