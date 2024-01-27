@@ -57,8 +57,7 @@ public class Shop : MonoBehaviour
             count++;
             if (count == 4) count = 0;
             
-        }
-        
+        }  
     }
 
     // Update is called once per frame
