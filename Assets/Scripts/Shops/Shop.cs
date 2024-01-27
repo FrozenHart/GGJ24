@@ -23,7 +23,6 @@ public class Shop : MonoBehaviour
 
     public void GoBack_OnClick()
     {
-        GameManager.ResetShopType();
         SceneManager.LoadSceneAsync("Gameplay");
     }
 
