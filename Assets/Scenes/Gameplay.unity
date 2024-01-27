@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 267998934}
   - component: {fileID: 267998935}
   m_Layer: 0
-  m_Name: LaghBar left
+  m_Name: LeftLaughBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 572493687}
   - component: {fileID: 572493688}
   m_Layer: 0
-  m_Name: LaghBar right
+  m_Name: RightLaughBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 749352448}
   - component: {fileID: 749352449}
   m_Layer: 0
-  m_Name: LaghBar mid
+  m_Name: MiddleLaughBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1104,7 +1104,7 @@ GameObject:
   - component: {fileID: 1054491283}
   - component: {fileID: 1054491284}
   m_Layer: 0
-  m_Name: Flor
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 1325518996}
   - component: {fileID: 1325518997}
   m_Layer: 0
-  m_Name: BackGround
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 1371080243}
   - component: {fileID: 1371080244}
   m_Layer: 0
-  m_Name: Cadeira Midle
+  m_Name: MiddleChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1638,7 +1638,7 @@ GameObject:
   - component: {fileID: 1411690961}
   - component: {fileID: 1411690962}
   m_Layer: 0
-  m_Name: Cadeira Left
+  m_Name: LeftChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2449,7 +2449,7 @@ GameObject:
   - component: {fileID: 1964902900}
   - component: {fileID: 1964902901}
   m_Layer: 0
-  m_Name: Cadeira Right
+  m_Name: RightChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
