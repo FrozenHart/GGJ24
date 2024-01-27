@@ -5,32 +5,32 @@ public class Shop : MonoBehaviour
 {
     public void BasicCardShop_OnClick()
     {
-        ShopStorage.currentType = ShopStorage.ShopType.Basic;
+        GameManager.currentShopType = ShopType.Basic;
         SceneManager.LoadSceneAsync("TypeShop");
     }
 
     public void SpecialCardShop_OnClick()
     {
-        ShopStorage.currentType = ShopStorage.ShopType.Special;
+        GameManager.currentShopType = ShopType.Special;
         SceneManager.LoadSceneAsync("TypeShop");
     }
 
     public void SuperCardShop_OnClick()
     {
-        ShopStorage.currentType = ShopStorage.ShopType.Super;
+        GameManager.currentShopType = ShopType.Super;
         SceneManager.LoadSceneAsync("TypeShop");
     }
 
     public void GoBack_OnClick()
     {
-        ShopStorage.ResetType();
+        GameManager.ResetShopType();
         SceneManager.LoadSceneAsync("Gameplay");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        ShopStorage.ResetType();
+        GameManager.ResetShopType();
     }
 
     // Update is called once per frame

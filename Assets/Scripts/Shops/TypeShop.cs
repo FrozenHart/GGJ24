@@ -9,7 +9,7 @@ public class TypeShop : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        shopType.text = ShopStorage.currentType.ToString();
+        shopType.text = GameManager.currentShopType.ToString();
     }
 
     // Update is called once per frame
