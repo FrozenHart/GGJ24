@@ -15,40 +15,66 @@ public class States : MonoBehaviour
     {
         
     }
-
+    
+    private void Hide()
+    {
+        MainMenu.SetActive(false);
+        Level1.SetActive(false);
+        Level2.SetActive(false);
+        Level3.SetActive(false);
+        Level4.SetActive(false);
+        Level5.SetActive(false);
+        Level6.SetActive(false);
+        Level7.SetActive(false);
+        Inventory.SetActive(false);
+        Shop.SetActive(false);
+    }
 
     public void Level_1()
     {
-
+        Hide();
+        Level1.SetActive(true);
     }
 
     public void Level_2()
     {
+        Hide();
+        Level2.SetActive(true);
 
     }
 
     public void Level_3()
     {
+        Hide();
+        Level3.SetActive(true);
 
     }
 
     public void Level_4()
     {
+        Hide();
+        Level4.SetActive(true);
 
     }
 
     public void Level_5()
     {
+        Hide();
+        Level5.SetActive(true);
 
     }
 
     public void Level_6()
     {
+        Hide();
+        Level6.SetActive(true);
 
     }
 
     public void Level_7()
     {
+        Hide();
+        Level7.SetActive(true);
 
     }
 

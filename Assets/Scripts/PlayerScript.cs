@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     private int mana = 7;
+    private int lives = 3;
     private List<string> hand = new List<string>();
     private Dictionary<string, Card> inventory = new Dictionary<string,Card>();
     private List<string> deck = new List<string>();
