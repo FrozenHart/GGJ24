@@ -33,5 +33,13 @@ public static class GameManager
         player = new Player();
     }
 
-    
+    internal static List<Card> GetCards(ShopType? currentShopType)
+    {
+        List<Card> cards = new List<Card>();
+        if (currentShopType == null)
+            return cards;
+
+
+        return cards;
+    }
 }

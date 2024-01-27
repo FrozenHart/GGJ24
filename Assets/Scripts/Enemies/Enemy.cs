@@ -36,6 +36,9 @@ public class Enemy
         }
         boringness += LaughPower;
     }
+
     public float Get_LaughPower()
-    { return boringness; }
+    { 
+        return boringness; 
+    }
 }
