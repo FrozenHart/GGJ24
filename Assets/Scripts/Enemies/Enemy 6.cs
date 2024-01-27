@@ -22,9 +22,14 @@ public class Enemy6 : MonoBehaviour
     { 
         LaghBar.value = boringness;
     }
+    public void Action(Card carta)
+    {
+
+    }
 
     public void SetSlider(Slider slider)
     {
         LaghBar = slider;
     }
+
 }
