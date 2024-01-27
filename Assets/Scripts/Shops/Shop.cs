@@ -53,7 +53,7 @@ public class Shop : MonoBehaviour
         {
             images[count - 1 >= 0 ? count - 1 : 3].SetActive(false);
             images[count].SetActive(true);
-            await Task.Delay(83);
+            await Task.Delay(125);
             count++;
             if (count == 4) count = 0;
             
