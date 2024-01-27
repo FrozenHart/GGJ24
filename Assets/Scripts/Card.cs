@@ -6,11 +6,11 @@ public class Card
 {
     private string name;
     private int manaCost;
-    private List<Effects> effects;
+    private List<HumourType> effects;
     private int laughPower;
     private string description;
 
-    public Card(string name, int manaCost, List<Effects> effects, int laughPower, string description)
+    public Card(string name, int manaCost, List<HumourType> effects, int laughPower, string description)
     {
         this.name = name;
         this.effects = effects;
@@ -29,7 +29,7 @@ public class Card
         return manaCost;
     }
 
-    public List<Effects> GetEffects()
+    public List<HumourType> GetEffects()
     {
         return effects;
     }

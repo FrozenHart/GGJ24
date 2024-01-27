@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     private List<string> hand = new List<string>();
     private Dictionary<string, Card> inventory = new Dictionary<string,Card>();
     private List<string> deck = new List<string>();
-    private List<Effects> effects = new List<Effects>();
+    private List<HumourType> effects = new List<HumourType>();
 
     // Start is called before the first frame update
     void Start()

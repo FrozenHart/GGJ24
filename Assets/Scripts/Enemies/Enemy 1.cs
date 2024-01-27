@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy4 : MonoBehaviour
+public class Enemy1 : MonoBehaviour
 {
     [SerializeField]
     private float boringness = 0.50f;
-    private List<Effects> Likes = new List<Effects>() { Effects.Banana, Effects.z };
-    private List<Effects> DisLike = new List<Effects>() { Effects.Negro };
     public Slider LaghBar;
+
+    private List<HumourType> Likes = new List<HumourType>() { HumourType.Banana,HumourType.y};
+    private List<HumourType> DisLike = new List<HumourType>() { HumourType.Intelligent };
+
 
     // Start is called before the first frame update
     void Start()

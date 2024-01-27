@@ -4,3 +4,13 @@ public enum ShopType
     Special,
     Super
 }
+
+public enum HumourType
+{
+    Banana,
+    Intelligent,
+    Dark,
+    x,
+    y,
+    z,
+}
