@@ -6,23 +6,23 @@ using UnityEngine.SceneManagement;
 public class TypeShop : MonoBehaviour
 {
     [SerializeField]
-    private TMPro.TMP_Text shopType;
+    private TMPro.TMP_Text shopType, coinCount;
     [SerializeField]
     private GameObject ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4;
     private bool isLoaded = false;
-    private int loopCount = 0;
+    private int loopCount = GameManager.currentShopLoopFrame;
 
     // Start is called before the first frame update
     public void Start()
     {
         shopType.text = GameManager.currentShopType.ToString();
+        coinCount.text = GameManager.player.GetMana().ToString();
         LoopImages();
     }
 
     // Update is called once per frame
     public void Update()
     {
-        
     }
 
     private async void LoopImages()
@@ -42,6 +42,7 @@ public class TypeShop : MonoBehaviour
 
     public void GoBack_OnClick()
     {
+        GameManager.currentShopLoopFrame = loopCount;
         SceneManager.LoadSceneAsync("Shop");
     }
 }

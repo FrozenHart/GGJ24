@@ -4,8 +4,9 @@ using UnityEngine;
 
 public static class GameManager
 {
-    public static ShopType? currentShopType { get; set; } = null;
-    public static Player player { get; set; } = null;
+    public static ShopType? currentShopType = null;
+    public static int currentShopLoopFrame = 0;
+    public static Player player = new Player();
 
     public static void ResetShopType()
     {

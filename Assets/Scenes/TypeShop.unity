@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopType: {fileID: 1506564798}
+  coinCount: {fileID: 1160693886}
   ShopLoop1: {fileID: 1312005266}
   ShopLoop2: {fileID: 603330821}
   ShopLoop3: {fileID: 1772819700}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Player
 {
-    private static int mana = 0;
+    private int mana = 0;
     private List<string> hand = new List<string>();
     private Dictionary<string, Card> inventory = new Dictionary<string, Card>();
     private List<string> deck = new List<string>();
@@ -18,4 +18,8 @@ public class Player
             deck.RemoveAt(cardNumber);
         }
     }
+
+    public int GetMana() { return mana; }
+
+    public void SetMana(int value) { mana = value; }
 } 

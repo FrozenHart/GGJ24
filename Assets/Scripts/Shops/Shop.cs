@@ -8,39 +8,54 @@ public class Shop : MonoBehaviour
 {
     [SerializeField]
     private GameObject ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4;
+    [SerializeField]
+    private TMPro.TMP_Text coinCount;
+
     private bool isLoaded = false;
+    private int loopCount = GameManager.currentShopLoopFrame;
 
     public void BasicCardShop_OnClick()
     {
-        GameManager.currentShopType = ShopType.Basic;
         isLoaded = false;
+        GameManager.currentShopLoopFrame = loopCount;
+        GameManager.currentShopType = ShopType.Basic;
         SceneManager.LoadSceneAsync("TypeShop");
     }
 
     public void SpecialCardShop_OnClick()
     {
-        GameManager.currentShopType = ShopType.Special;
         isLoaded = false;
+        GameManager.currentShopLoopFrame = loopCount;
+        GameManager.currentShopType = ShopType.Special;
         SceneManager.LoadSceneAsync("TypeShop");
     }
 
     public void SuperCardShop_OnClick()
     {
-        GameManager.currentShopType = ShopType.Super;
         isLoaded = false;
+        GameManager.currentShopLoopFrame = loopCount;
+        GameManager.currentShopType = ShopType.Super;
         SceneManager.LoadSceneAsync("TypeShop");
     }
 
     public void GoBack_OnClick()
     {
         isLoaded = false;
+        GameManager.currentShopLoopFrame = 0;
         SceneManager.LoadSceneAsync("Gameplay");
+    }
+
+    public void GetMoney_Click()
+    {
+        GameManager.player.SetMana(GameManager.player.GetMana() + 10);
+        coinCount.text = GameManager.player.GetMana().ToString();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         GameManager.ResetShopType();
+        coinCount.text = GameManager.player.GetMana().ToString();
         LoopImages();
     }
     
@@ -48,15 +63,13 @@ public class Shop : MonoBehaviour
     {
         List<GameObject> images = new List<GameObject>() { ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4 };
         isLoaded = true;
-        int count = 0;
         while (isLoaded && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Shop"))
         {
-            images[count - 1 >= 0 ? count - 1 : 3].SetActive(false);
-            images[count].SetActive(true);
+            images[loopCount - 1 >= 0 ? loopCount - 1 : 3].SetActive(false);
+            images[loopCount].SetActive(true);
             await Task.Delay(125);
-            count++;
-            if (count == 4) count = 0;
-            
+            loopCount++;
+            if (loopCount == 4) loopCount = 0; 
         }  
     }
 
