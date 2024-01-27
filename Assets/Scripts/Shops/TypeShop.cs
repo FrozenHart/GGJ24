@@ -15,7 +15,7 @@ public class TypeShop : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        shopType.text = GameManager.currentShopType.ToString();
+        shopType.text = "Shop - " + GameManager.currentShopType.ToString();
         coinCount.text = GameManager.player.GetMana().ToString();
         LoopImages();
     }
