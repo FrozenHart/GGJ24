@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class States : MonoBehaviour
 {
@@ -51,6 +50,11 @@ public class States : MonoBehaviour
     public void Level_7()
     {
 
+    }
+
+    public void Shop_OnClick()
+    {
+        SceneManager.LoadSceneAsync("Shop");
     }
 
 }
