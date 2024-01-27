@@ -7,6 +7,16 @@ public class TypeShop : MonoBehaviour
 {
     [SerializeField]
     private TMPro.TMP_Text shopType, coinCount;
+
+    [SerializeField]
+    private TMPro.TMP_Text card1Title, card1Description, card1Cost;
+
+    [SerializeField]
+    private TMPro.TMP_Text card2Title, card2Description, card2Cost;
+
+    [SerializeField]
+    private TMPro.TMP_Text card3Title, card3Description, card3Cost;
+
     [SerializeField]
     private GameObject ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4;
     private bool isLoaded = false;
@@ -16,8 +26,14 @@ public class TypeShop : MonoBehaviour
     public void Start()
     {
         shopType.text = "Shop - " + GameManager.currentShopType.ToString();
+        SetupAvailableCards();
         coinCount.text = GameManager.player.GetMana().ToString();
         LoopImages();
+    }
+
+    private void SetupAvailableCards()
+    {
+        
     }
 
     // Update is called once per frame
