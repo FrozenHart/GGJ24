@@ -502,7 +502,7 @@ MonoBehaviour:
   ShopLoop2: {fileID: 846732880}
   ShopLoop3: {fileID: 1911793588}
   ShopLoop4: {fileID: 1717315857}
-  coinCount: {fileID: 0}
+  coinCount: {fileID: 1104600072}
 --- !u!1 &643958988
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private Slider Midle_Slider, Left_Slider, Right_Slider;
+    public GameObject Midle_Slider, Left_Slider, Right_Slider;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     private Enemy enemy_mid, enemy_left, enemy_right;
@@ -20,21 +20,22 @@ public class Gameplay : MonoBehaviour
     void Start()
     {
         confirmationDialog.SetActive(false);
+        Hide_All();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Midle_Slider.value = enemy_mid.Get_LaughPower();
-        Left_Slider.value = enemy_left.Get_LaughPower();
-        Right_Slider.value = enemy_right.Get_LaughPower();
+      //  Midle_Slider.GetComponent<Slider>().value = enemy_mid.Get_LaughPower();
+      //  Left_Slider.GetComponent<Slider>().value = enemy_left.Get_LaughPower();
+       //  Right_Slider.GetComponent<Slider>().value = enemy_right.Get_LaughPower();
     }
 
     public void Shop_OnClick()
     {
         SceneManager.LoadSceneAsync("Shop");
     }
-
+     
     public void MainMenu_OnClick()
     {
         confirmationDialog.SetActive(true); 
@@ -49,9 +50,28 @@ public class Gameplay : MonoBehaviour
     {
         confirmationDialog.SetActive(false);
     }
-    private void Level1()
+    private void Level_type_123()
     {
         int enemyid = new System.Random().Next(0, 12);
         enemy_mid = GameManager.enemies[enemyid];
+    }
+    private void Level_type_456()
+    {
+        int enemyid = new System.Random().Next(0, 12);
+        enemy_mid = GameManager.enemies[enemyid];
+    }
+    private void Level_type_7()
+    {
+        int enemyid = new System.Random().Next(0, 12);
+        enemy_mid = GameManager.enemies[enemyid];
+    }
+    private void Hide_All()
+    {
+       // Midle_Slider.SetActive(false);
+       // Left_Slider.SetActive(false);
+       // Right_Slider.SetActive(false);
+       // Enemy_Mid.SetActive(false);
+       // Enemy_Left.SetActive(false);
+       // Enemy_Right.SetActive(false);
     }
 }
