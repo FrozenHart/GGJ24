@@ -229,8 +229,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6357a2f1974472f45ab4dd388a356eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card1: {fileID: 735328013}
+  card2: {fileID: 1173191374}
+  card3: {fileID: 190726603}
   shopType: {fileID: 1506564798}
   coinCount: {fileID: 1942626653}
+  card1Title: {fileID: 813433337}
+  card1Description: {fileID: 230751445}
+  card1Cost: {fileID: 501919729}
+  card2Title: {fileID: 769646315}
+  card2Description: {fileID: 1425448359}
+  card2Cost: {fileID: 1715585897}
+  card3Title: {fileID: 1181040453}
+  card3Description: {fileID: 1961181179}
+  card3Cost: {fileID: 1715585897}
   ShopLoop1: {fileID: 1312005266}
   ShopLoop2: {fileID: 603330821}
   ShopLoop3: {fileID: 1772819700}

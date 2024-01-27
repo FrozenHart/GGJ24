@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class TypeShop : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameObject card1, card2, card3;
+
     [SerializeField]
     private TMPro.TMP_Text shopType, coinCount;
 
@@ -33,7 +37,7 @@ public class TypeShop : MonoBehaviour
 
     private void SetupAvailableCards()
     {
-        
+
     }
 
     // Update is called once per frame
