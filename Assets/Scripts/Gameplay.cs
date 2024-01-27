@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class States : MonoBehaviour
+public class Gameplay : MonoBehaviour
 {
-    [SerializeField] private GameObject MainMenu, Level1, Level2, Level3, Level4, Level5, Level6, Level7, Inventory, Shop, LBleft, LBright, LBmid, LBcanvas;
+    [SerializeField]
+    private GameObject confirmationDialog;
+
     // Start is called before the first frame update
     void Start()
     {
-        MainMenu.SetActive(true);
+        confirmationDialog.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,6 +25,16 @@ public class States : MonoBehaviour
 
     public void MainMenu_OnClick()
     {
+        confirmationDialog.SetActive(true); 
+    }
+
+    public void MenuConfirmDialog_Yes_OnClick()
+    {
         SceneManager.LoadSceneAsync("MainMenu");
+    }
+
+    public void MenuConfirmDialog_No_OnClick()
+    {
+        confirmationDialog.SetActive(false);
     }
 }
