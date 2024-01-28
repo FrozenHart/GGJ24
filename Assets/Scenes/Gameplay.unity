@@ -1237,6 +1237,15 @@ MonoBehaviour:
   Enemy_Mid: {fileID: 1470273637}
   Enemy_Left: {fileID: 1524369903}
   Enemy_Right: {fileID: 474093191}
+  s1l1: {fileID: 2110870640}
+  s1l2: {fileID: 1567916865}
+  s1d: {fileID: 1301326157}
+  s2l1: {fileID: 1085838100}
+  s2l2: {fileID: 2110870640}
+  s2d: {fileID: 949525751}
+  s3l1: {fileID: 1600215125}
+  s3l2: {fileID: 1993767767}
+  s3d: {fileID: 2145987527}
   Enemy_Mid_Animator: {fileID: 1470273640}
   Enemy_Left_Animator: {fileID: 1524369906}
   Enemy_Right_Animator: {fileID: 474093194}
