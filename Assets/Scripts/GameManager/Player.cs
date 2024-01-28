@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine.XR;
 
 public class Player
 {
-    private int mana = 10000;
+    private int mana = 10;
     private int life = 3;
     private List<Card> inventory = new List<Card>();
     private List<Card> hand = new List<Card>();

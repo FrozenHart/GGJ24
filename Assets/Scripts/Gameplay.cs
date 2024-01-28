@@ -13,7 +13,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3,Levelnumb,CoinCount;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3,Levelnumb,CoinCount,LifeCount;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     [SerializeField]
@@ -45,6 +45,7 @@ public class Gameplay : MonoBehaviour
         Set_Cards();
         Set_Hand();
         CoinCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetMana().ToString();
+        LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
     }
     private void FixedUpdate()
     {
