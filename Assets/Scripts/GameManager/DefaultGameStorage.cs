@@ -97,7 +97,7 @@ public static class DefaultGameStorage
         new Card("O humor desta piada era tão negro...", -1, AC, -1, "...que infelizmente foi baleada pela policia", ShopType.Basic),
         new Card("Qual a diferença entre um padre e um tenista?", -1, AC, -1, "As bolas com que o tenista brinca têm pelinhos.", ShopType.Basic),
         new Card("Como é que se chama o protagonista do Dragon Ball com hemorroidas", -1, AD, -1, "San grocu", ShopType.Basic),
-        new Card("truz-truz!", -1, AD, -1, "Quem é?\ntruz-truz!\nQuem é?\ntruz-truz!\nQuem é?...", ShopType.Basic),
+        new Card("truz-truz!", -1, AD, -1, "Quem é? truz-truz!\nQuem é? truz-truz!\nQuem é?...", ShopType.Basic),
         new Card("Esta piada era suposta ser humor negro e inteligente.", -1, BC, -1,
             "Infelizmente são duas coisas coisas que não combinam", ShopType.Basic),
         new Card("O que é que o Kurt Cobain e o Michaelangelo têm em comum?", -1, BC, -1,

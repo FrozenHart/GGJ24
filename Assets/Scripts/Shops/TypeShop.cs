@@ -145,7 +145,7 @@ public class TypeShop : MonoBehaviour
         card1B.interactable = false;
         card1B.gameObject.SetActive(true);
         card1Title.text = "";
-        card1Description.text = "Not Available";
+        card1Description.text = "Nothing Available";
         card1Cost.text = "";
         card1Cost.gameObject.SetActive(false);
         card1Coin.SetActive(false);
@@ -153,7 +153,7 @@ public class TypeShop : MonoBehaviour
         card2B.interactable = false;
         card2B.gameObject.SetActive(true);
         card2Title.text = "";
-        card2Description.text = "Not Available";
+        card2Description.text = "Nothing Available";
         card2Cost.text = "";
         card2Cost.gameObject.SetActive(false);
         card2Coin.SetActive(false);
@@ -161,7 +161,7 @@ public class TypeShop : MonoBehaviour
         card3B.interactable = false;
         card3B.gameObject.SetActive(true);
         card3Title.text = "";
-        card3Description.text = "Not Available";
+        card3Description.text = "Nothing Available";
         card3Cost.text = "";
         card3Cost.gameObject.SetActive(false);
         card3Coin.SetActive(false);
