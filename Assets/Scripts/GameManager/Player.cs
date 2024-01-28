@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.XR;
 
 public class Player
 {
@@ -24,5 +25,14 @@ public class Player
     internal void AddCard(Card card)
     {
         inventory.Add(card);
+    }
+    
+    internal void AddCard_ToHand(Card card) 
+    {
+        hand.Add(card);
+    }
+    public void RemoveCardFromHand(Card card)
+    {
+        hand.Remove(card);
     }
 } 

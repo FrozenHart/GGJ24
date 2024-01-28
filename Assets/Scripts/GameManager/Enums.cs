@@ -7,8 +7,8 @@ public enum ShopType
 
 public enum HumourType
 {
-    A,
-    B,
-    C,
-    D
+    A,//bannanna
+    B,//inte
+    C,//dark
+    D//x
 }

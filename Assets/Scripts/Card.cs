@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Card 
 {
     private string name;
     private int manaCost;
     private HashSet<HumourType> effects;
-    private int laughPower;
+    private float laughPower;
     private string description;
-    private ShopType Tipo;
+    private ShopType type;
+    private Image image;
 
-    public Card(string name, int manaCost, HashSet<HumourType> effects, int laughPower, string description, ShopType shopType)
+    public Card(string name, int manaCost, HashSet<HumourType> effects, float laughPower, string description, ShopType shopType)//, Image image)
     {
         setName(name);
         setEffects(effects);
@@ -20,12 +22,12 @@ public class Card
         SetLaughPower(laughPower);
         SetDescription(description);
         SetTipo(shopType);
-        
+        //this.image = image;
     }
 
     public ShopType GetCardType()
     {
-        return Tipo;
+        return type;
     }
 
     public string GetName()
@@ -57,12 +59,15 @@ public class Card
         this.effects = effects;
     }
 
-    public int GetLaughPower()
+    public float GetLaughPower()
     { 
         return laughPower;
     }
 
-    public void SetLaughPower(int laughPower) { this.laughPower = laughPower;}
+    public void SetLaughPower(float laughPower) 
+    { 
+        this.laughPower = laughPower;
+    }
 
     public string GetDescription()
     {
@@ -76,12 +81,12 @@ public class Card
 
     public ShopType GetShopType()
     {
-        return this.Tipo;
+        return this.type;
     }
 
     public void SetTipo(ShopType tipo)
     {
-        this.Tipo = tipo;
+        this.type = tipo;
     }
 
     public override bool Equals(object obj)
@@ -97,5 +102,9 @@ public class Card
     public override int GetHashCode()
     {
         return HashCode.Combine(name, manaCost, effects, laughPower, description);
+    }
+    public Image Get_Image() 
+    {
+        return image;
     }
 }
