@@ -49,7 +49,10 @@ public class Gameplay : MonoBehaviour
         C = Resources.Load<Sprite>("Sprites/icons/C");
         D = Resources.Load<Sprite>("Sprites/icons/D");
         CoinCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetMana().ToString();
-       // LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
+        stats1.SetActive(false);
+        stats2.SetActive(false);
+        stats3.SetActive(false); 
+        // LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
     }
     private void FixedUpdate()
     {
@@ -537,9 +540,7 @@ public class Gameplay : MonoBehaviour
         CardSpot_3.SetActive(false);
         CardSpot_12.SetActive(false);
         CardSpot_23.SetActive(false);
-        stats1.SetActive(false);
-        stats2.SetActive(false);
-        stats3.SetActive(false);
+       
     }
 
     private void CheckAllHappy()
@@ -581,6 +582,7 @@ public class Gameplay : MonoBehaviour
                     }
                 }
             }
+            Debug.Log(GameManager.player.GetHand().Count);
         }
         else if(Level2)//5
         {
