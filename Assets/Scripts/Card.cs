@@ -10,15 +10,21 @@ public class Card
     private HashSet<HumourType> effects;
     private int laughPower;
     private string description;
-    private string Tipo;
+    private ShopType type;
 
-    public Card(string name, int manaCost, HashSet<HumourType> effects, int laughPower, string description)
+    public Card(string name, int manaCost, HashSet<HumourType> effects, int laughPower, string description, ShopType type)
     {
         setName(name);
         setEffects(effects);
         setManaCost(manaCost);
         SetLaughPower(laughPower);
         SetDescription(description);
+        this.type = type;
+    }
+
+    public ShopType GetCardType()
+    {
+        return type;
     }
 
     public string GetName()

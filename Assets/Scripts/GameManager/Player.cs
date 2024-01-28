@@ -4,22 +4,25 @@ using System.Collections.Generic;
 public class Player
 {
     private int mana = 0;
-    private List<string> hand = new List<string>();
-    private Dictionary<string, Card> inventory = new Dictionary<string, Card>();
-    private List<string> deck = new List<string>();
-    private List<HumourType> effects = new List<HumourType>();
+    private List<Card> inventory = new List<Card>();
+    private List<Card> hand = new List<Card>();
 
-    private void DrawCard(int numberOfCards)
+    public List<Card> GetInventory()
     {
-        for (int i = 0; i < numberOfCards; i++)
-        {
-            int cardNumber = new Random().Next(0, deck.Count - 1);
-            hand.Add(deck[cardNumber]);
-            deck.RemoveAt(cardNumber);
-        }
+        return inventory;
+    }
+
+    public List<Card> GetHand()
+    {
+        return hand;
     }
 
     public int GetMana() { return mana; }
 
     public void SetMana(int value) { mana = value; }
+
+    internal void AddCard(Card card)
+    {
+        inventory.Add(card);
+    }
 } 

@@ -77,7 +77,7 @@ public class Gameplay : MonoBehaviour
     {
         Hide_All();
         int enemyidm = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyidm];
+        enemy_mid = DefaultGameStorage.enemyList[enemyidm];
         Level1 = true;
         Level2 = false;
         Level3 = false;
@@ -89,8 +89,8 @@ public class Gameplay : MonoBehaviour
         Hide_All();
         int enemyidl = new System.Random().Next(0, 12);
         int enemyidr = new System.Random().Next(0, 12);
-        enemy_left = GameManager.enemies[enemyidl];
-        enemy_right = GameManager.enemies[enemyidr];
+        enemy_left = DefaultGameStorage.enemyList[enemyidl];
+        enemy_right = DefaultGameStorage.enemyList[enemyidr];
         Level2 = true;
         Level1 = false;
         Level3 = false;
@@ -105,9 +105,9 @@ public class Gameplay : MonoBehaviour
         int enemyidm = new System.Random().Next(0, 12);
         int enemyidl = new System.Random().Next(0, 12);
         int enemyidr = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyidm];
-        enemy_left = GameManager.enemies[enemyidl];
-        enemy_right = GameManager.enemies[enemyidr];
+        enemy_mid = DefaultGameStorage.enemyList[enemyidm];
+        enemy_left = DefaultGameStorage.enemyList[enemyidl];
+        enemy_right = DefaultGameStorage.enemyList[enemyidr];
         Level3 = true;
         Level2 = false;
         Level1 = false;
