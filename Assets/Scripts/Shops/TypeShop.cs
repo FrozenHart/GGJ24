@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,8 +41,8 @@ public class TypeShop : MonoBehaviour
 
         specialButtons = new List<Tuple<Button, HashSet<HumourType>>>() {
             new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ABC),
-            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ABD),
-            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ACD)
+            new Tuple<Button, HashSet<HumourType>>(specialCard2, DefaultGameStorage.ABD),
+            new Tuple<Button, HashSet<HumourType>>(specialCard3, DefaultGameStorage.ACD)
         };
 
         superButton = new Tuple<Button, HashSet<HumourType>>(superCard, DefaultGameStorage.super);
@@ -111,20 +112,37 @@ public class TypeShop : MonoBehaviour
     public void BuyCard(int num)
     {
         Player player = GameManager.player;
+        List<Card> cards = GameManager.player.GetInventory();
+        List<Card> allCards = DefaultGameStorage.GameCards;
 
         switch (GameManager.currentShopType)
         {
             case ShopType.Basic:
-                if (num < 0 || num > 6) return;
+                if (num < 0 || num > 6)
+                    break;
                 player.SetMana(player.GetMana() - costs[0]);
+                var newCard = allCards.Where(x => !cards.Contains(x) && canObtain(basicButtons[num].Item2));
+                if (!newCard.Any())
+                    break;
+                player.AddCard(newCard.First());
                 break;
             case ShopType.Special:
-                if (num < 0 || num > 3) return;
+                if (num < 0 || num > 3)
+                    break;
                 player.SetMana(player.GetMana() - costs[1]);
+                var newCard2 = allCards.Where(x => !cards.Contains(x) && canObtain(basicButtons[num].Item2));
+                if (!newCard2.Any())
+                    break;
+                player.AddCard(newCard2.First());
                 break;
             case ShopType.Super:
-                if (num < 0 || num > 1) return;
+                if (num < 0 || num > 1)
+                    break;
                 player.SetMana(player.GetMana() - costs[2]);
+                var newCard3 = allCards.Where(x => !cards.Contains(x) && canObtain(basicButtons[num].Item2));
+                if (!newCard3.Any())
+                    break;
+                player.AddCard(newCard3.First());
                 break;
         }
         
@@ -145,21 +163,31 @@ public class TypeShop : MonoBehaviour
                 foreach (var card in basicButtons)
                 {
                     card.Item1.gameObject.SetActive(true);
-                    card.Item1.interactable = player.GetMana() >= costs[0];
+                    card.Item1.interactable = player.GetMana() >= costs[0] && canObtain(card.Item2);
                 }
                 break;
             case ShopType.Special:
                 foreach (var card in specialButtons)
                 {
                     card.Item1.gameObject.SetActive(true);
-                    card.Item1.interactable = player.GetMana() >= costs[1];
+                    card.Item1.interactable = player.GetMana() >= costs[1] && canObtain(card.Item2);
                 }
                 break;
             case ShopType.Super:
                 superCard.gameObject.SetActive(true);
-                superCard.interactable = player.GetMana() >= costs[2];
+                superCard.interactable = player.GetMana() >= costs[2] && canObtain(superButton.Item2);
                 break;
         }
+    }
+
+    private bool canObtain(HashSet<HumourType> cardType)
+    {
+        List<Card> cards = GameManager.player.GetInventory();
+
+        if (cards.Select(x => x.GetEffects() == cardType).Count() == 2)
+            return false;
+
+        return true;
     }
 
     private void ResetAll()
