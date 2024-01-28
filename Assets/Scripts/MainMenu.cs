@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private GameObject howtoplayDialog;
+    private GameObject howtoplayDialog, creditDialog;
 
     public void Quit_OnClick()
     {
@@ -26,6 +26,16 @@ public class MainMenu : MonoBehaviour
     public void CloseHowToPlay_OnClick()
     {
         howtoplayDialog.SetActive(false);
+    }
+
+    public void ShowCredits_OnClick()
+    {
+        creditDialog.SetActive(true);
+    }
+
+    public void CloseCredits_OnClick()
+    {
+        creditDialog.SetActive(false);
     }
 
     // Start is called before the first frame update
