@@ -183,7 +183,7 @@ public class TypeShop : MonoBehaviour
     {
         List<Card> cards = GameManager.player.GetInventory();
 
-        ~//if (cards.Select(x => x.GetEffects().ElementAt(0) == cardType.ElementAt(0) && x.GetEffects().ElementAt(1) == cardType.ElementAt(1)).Count() == 2)
+        //if (cards.Select(x => x.GetEffects().ElementAt(0) == cardType.ElementAt(0) && x.GetEffects().ElementAt(1) == cardType.ElementAt(1)).Count() == 2)
             //return false;
 
         return true;
