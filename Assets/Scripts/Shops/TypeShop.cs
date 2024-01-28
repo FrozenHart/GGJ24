@@ -28,6 +28,7 @@ public class TypeShop : MonoBehaviour
     private GameObject ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4;
     private bool isLoaded = false;
     private int loopCount = GameManager.currentShopLoopFrame;
+
     private List<Card> cards = new List<Card>();
 
     // Start is called before the first frame update
@@ -111,6 +112,7 @@ public class TypeShop : MonoBehaviour
         card1Title.text = cards[0].GetName();
         card1Description.text = cards[0].GetDescription();
         card1Cost.text = cards[0].GetManaCost().ToString();
+        card1Cost.color = GameManager.player.GetMana() >= cards[0].GetManaCost() ? Color.black: Color.red;
         card1Cost.gameObject.SetActive(true);
         card1Coin.SetActive(true);
 
@@ -121,6 +123,7 @@ public class TypeShop : MonoBehaviour
         card2Title.text = cards[1].GetName();
         card2Description.text = cards[1].GetDescription();
         card2Cost.text = cards[1].GetManaCost().ToString();
+        card2Cost.color = GameManager.player.GetMana() >= cards[1].GetManaCost() ? Color.black : Color.red;
         card2Cost.gameObject.SetActive(true);
         card2Coin.SetActive(true);
 
@@ -131,6 +134,7 @@ public class TypeShop : MonoBehaviour
         card3Title.text = cards[2].GetName();
         card3Description.text = cards[2].GetDescription();
         card3Cost.text = cards[2].GetManaCost().ToString();
+        card3Cost.color = GameManager.player.GetMana() >= cards[2].GetManaCost() ? Color.black : Color.red;
         card3Cost.gameObject.SetActive(true);
         card3Coin.SetActive(true);
     }
