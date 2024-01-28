@@ -12,7 +12,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3,Levelnumb,CoinCount;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     public Animator Enemy_Mid_Animator, Enemy_Left_Animator, Enemy_Right_Animator;
@@ -187,6 +187,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_123();
                 }
                 Current_Level = GameManager.Level;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite= Resources.Load<Sprite>("Sprites/1.png") ;
                 break;
             case 2:
                 if (Current_Level == GameManager.Level)
@@ -198,6 +199,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_123();
                 }
                 Current_Level = GameManager.Level;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/2.png");
 
                 break;
             case 3:
@@ -210,7 +212,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_123();
                 }
                 Current_Level = GameManager.Level;
-
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/3.png");
                 break;
             case 4:
                 if (Current_Level == GameManager.Level)
@@ -223,6 +225,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_456();
                 }
                 Current_Level = GameManager.Level;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/4.png");
 
                 break;
             case 5:
@@ -236,6 +239,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_456(); 
                 }
                 Current_Level = GameManager.Level;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/5.png");
 
                 break;
             case 6:
@@ -249,6 +253,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_456();
                 }
                 Current_Level = GameManager.Level;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/6.png");
 
                 break;
             case 7:
@@ -262,6 +267,8 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_7();
                 }
+                Current_Level = GameManager.Level;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/7.png");
                 break;
         }
     }
@@ -522,6 +529,7 @@ public class Gameplay : MonoBehaviour
                     if(GameManager.player.GetInventory()[indexcard]==item)
                     {
                         GameManager.player.AddCard_ToHand(item);
+                        Debug.Log("adicionou carta");
                     }
                 }
             }
