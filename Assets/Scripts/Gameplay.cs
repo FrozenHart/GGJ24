@@ -3,9 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 using System.Linq;
-using Unity.PlasticSCM.Editor.WebApi;
 using TMPro;
 
 public class Gameplay : MonoBehaviour
@@ -13,7 +11,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1, CardSpot_2, CardSpot_3, CardSpot_12, CardSpot_23, stats1, stats2, stats3, Levelnumb, CoinCount;//,LifeCount;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1, CardSpot_2, CardSpot_3, CardSpot_12, CardSpot_23, stats1, stats2, stats3, Levelnumb, CoinCount, LifeCount;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     [SerializeField]
@@ -35,11 +33,6 @@ public class Gameplay : MonoBehaviour
         confirmationDialog.SetActive(false);
         Pass = false;
         allhappy = false;
-        GameManager.player.AddCard(DefaultGameStorage.GameCards[0]);
-        GameManager.player.AddCard(DefaultGameStorage.GameCards[1]);
-        GameManager.player.AddCard(DefaultGameStorage.GameCards[2]);
-        GameManager.player.AddCard(DefaultGameStorage.GameCards[4]);
-        GameManager.player.AddCard(DefaultGameStorage.GameCards[5]);
         NexLevel();
         Get_Inicial_Cards();
         Set_Hand();
@@ -52,7 +45,7 @@ public class Gameplay : MonoBehaviour
         stats1.SetActive(false);
         stats2.SetActive(false);
         stats3.SetActive(false); 
-        // LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
+        LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
     }
     private void FixedUpdate()
     {
@@ -81,7 +74,15 @@ public class Gameplay : MonoBehaviour
                     Pass = true;
                 }
             }
-            if(Pass) { GameManager.Nexlev(); }
+            waitForConfirm = true;
+            if (Pass) { 
+                GameManager.Nexlev();
+            }
+            else
+            {
+                GameManager.player.TakeDamage();
+            }
+            while (waitForConfirm) { }
             SceneManager.LoadScene("Shop");
         }
         else
