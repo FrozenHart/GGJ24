@@ -53,17 +53,17 @@ public class Gameplay : MonoBehaviour
     private void Level_type_123()
     {
         int enemyid = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyid];
+        enemy_mid = DefaultGameStorage.enemyList[enemyid];
     }
     private void Level_type_456()
     {
         int enemyid = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyid];
+        enemy_mid = DefaultGameStorage.enemyList[enemyid];
     }
     private void Level_type_7()
     {
         int enemyid = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyid];
+        enemy_mid = DefaultGameStorage.enemyList[enemyid];
     }
     private void Hide_All()
     {
