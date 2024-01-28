@@ -26,6 +26,7 @@ public class Gameplay : MonoBehaviour
     private int index = 0;
     public bool allhappy;
     private Sprite A= Resources.Load<Sprite>("Sprites/icons/A"), B = Resources.Load<Sprite>("Sprites/icons/B"), C = Resources.Load<Sprite>("Sprites/icons/C"), D = Resources.Load<Sprite>("Sprites/icons/D");
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class Gameplay : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (waitForConfirm) return;
         CheckAllHappy();
         if ((GameManager.player.GetHand().Count==0) || allhappy)
         {
@@ -278,6 +280,7 @@ public class Gameplay : MonoBehaviour
 
     public void Select_Card_1()
     {
+        ShowCard(card1);
         if (GameManager.player.GetHand().Count == 1)
         {
             GameManager.player.Reset_Hand();
@@ -306,6 +309,7 @@ public class Gameplay : MonoBehaviour
     }
     public void Select_Card_2()
     {
+        ShowCard(card2);
         if (GameManager.player.GetHand().Count == 1)
         {
             GameManager.player.Reset_Hand();
@@ -334,6 +338,7 @@ public class Gameplay : MonoBehaviour
     }
     public void Select_Card_3()
     {
+        ShowCard(card3);
         if (GameManager.player.GetHand().Count == 1)
         {
             GameManager.player.Reset_Hand();
@@ -363,6 +368,7 @@ public class Gameplay : MonoBehaviour
 
     public void Select_Card_12() 
     {
+        ShowCard(card1);
         if (GameManager.player.GetHand().Count == 1)
         {
             GameManager.player.Reset_Hand();
@@ -390,7 +396,8 @@ public class Gameplay : MonoBehaviour
         Set_Cards();
     }
     public void Select_Card_23() {
-        if(GameManager.player.GetHand().Count == 1)
+        ShowCard(card2);
+        if (GameManager.player.GetHand().Count == 1)
         {
             GameManager.player.Reset_Hand();
         }
@@ -555,5 +562,23 @@ public class Gameplay : MonoBehaviour
                 GameManager.player.AddCard_ToHand(GameManager.player.GetInventory()[indexcard]);
             }
         }
+    }
+
+    [SerializeField]
+    private GameObject cardName, cardDescription, cardDialog;
+    bool waitForConfirm = false;
+
+    private void ShowCard(Card card)
+    {
+        cardName.GetComponent<TMPro.TMP_Text>().text = card.GetName();
+        cardDescription.GetComponent<TMPro.TMP_Text>().text = card.GetDescription();
+        cardDialog.SetActive(true);
+        waitForConfirm = true;
+    }
+
+    public void CloseCardDialog_OnClick()
+    {
+        cardDialog.SetActive(false);
+        waitForConfirm = false;
     }
 }
