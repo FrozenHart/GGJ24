@@ -6,15 +6,16 @@ using UnityEngine.UIElements;
 
 public class Card 
 {
+    
     private string name;
     private int manaCost;
     private HashSet<HumourType> effects;
     private float laughPower;
     private string description;
     private ShopType type;
-    private Image image;
+    private Sprite image;
 
-    public Card(string name, int manaCost, HashSet<HumourType> effects, float laughPower, string description, ShopType shopType)//, Image image)
+    public Card(string name, int manaCost, HashSet<HumourType> effects, float laughPower, string description, ShopType shopType, Sprite image)
     {
         setName(name);
         setEffects(effects);
@@ -22,7 +23,7 @@ public class Card
         SetLaughPower(laughPower);
         SetDescription(description);
         SetTipo(shopType);
-        //this.image = image;
+        SetImage(image);
     }
 
     public ShopType GetCardType()
@@ -100,8 +101,14 @@ public class Card
     {
         return HashCode.Combine(name, manaCost, effects, laughPower, description);
     }
-    public Image Get_Image() 
+    public Sprite Get_Image() 
     {
         return image;
     }
+
+    public void SetImage(Sprite image) {
+        this.image = image;
+    }
+
+    
 }
