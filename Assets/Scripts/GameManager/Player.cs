@@ -4,9 +4,11 @@ using UnityEngine.XR;
 
 public class Player
 {
-    private int mana = 0;
+    private int mana = 10000;
     private List<Card> inventory = new List<Card>();
     private List<Card> hand = new List<Card>();
+
+    public List<Card> availableCards = new List<Card>(DefaultGameStorage.GameCards);
 
     public List<Card> GetInventory()
     {
