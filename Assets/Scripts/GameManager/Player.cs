@@ -6,6 +6,7 @@ using UnityEngine.XR;
 public class Player
 {
     private int mana = 10000;
+    private int life = 3;
     private List<Card> inventory = new List<Card>();
     private List<Card> hand = new List<Card>();
 
@@ -29,6 +30,17 @@ public class Player
     {
         inventory.Add(card);
         
+    }
+
+    public void TakeDamage()
+    {
+        life--;
+        if (life <= 0 ) life = 0;
+    }
+
+    public int GetLife()
+    {
+        return life;
     }
     
     internal void AddCard_ToHand(Card card) 
