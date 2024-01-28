@@ -7,6 +7,7 @@ public static class GameManager
     public static ShopType? currentShopType = null;
     public static int currentShopLoopFrame = 0;
     public static Player player = new Player();
+    public static int Level = 1;
 
     public static void ResetShopType()
     {
@@ -17,7 +18,10 @@ public static class GameManager
     {
         player = new Player();
     }
-
+    public static void Nexlev()
+    {
+        Level++;
+    }
     internal static List<Card> GetCards(ShopType? currentShopType)
     {
         List<Card> cards = new List<Card>();

@@ -38,7 +38,7 @@ public class Enemy
         }
         if(boringness+LaughPower>100)
         {
-            boringness = 100;
+            boringness = 1f;
         }
         else
         {

@@ -12,17 +12,16 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     public Animator Enemy_Mid_Animator, Enemy_Left_Animator, Enemy_Right_Animator;
     private Enemy enemy_mid, enemy_left, enemy_right;
     private Card card1, card2, card3;
-    private bool Level1=false, Level2=false, Level3=false;
+    private bool Level1 = false, Level2 = false, Level3 = false;
     private int Current_Level = 0;
     public object Midle_Slicder { get; private set; }
     bool Pass = false;
-    int Level = 1;
     int index = 0;
     public int numberofcardsrdsr;
     // Start is called before the first frame update
@@ -33,7 +32,7 @@ public class Gameplay : MonoBehaviour
         GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[0]);
         GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[1]);
         GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[2]);
-       
+        Pass = false;
 
         Set_Cards();
         Set_Hand();
@@ -42,7 +41,7 @@ public class Gameplay : MonoBehaviour
     private void FixedUpdate()
     {
         numberofcardsrdsr = GameManager.player.GetHand().Count;
-        if (!GameManager.player.GetHand().Any<Card>())
+        if ((GameManager.player.GetHand().Count==0) || ((enemy_mid.Get_LaughPower() == 1f) && (enemy_right.Get_LaughPower() ==1f) && (enemy_left.Get_LaughPower() == 1f)))
         {
             if(Level1)
             {
@@ -65,8 +64,8 @@ public class Gameplay : MonoBehaviour
                     Pass = true;
                 }
             }
-            if(Pass) { Level++; }
-            NexLevel();
+            if(Pass) { GameManager.Nexlev(); }
+            
         }
         else
         {
@@ -174,10 +173,10 @@ public class Gameplay : MonoBehaviour
 
     private void NexLevel()
     {
-        switch (Level)
+        switch (GameManager.Level)
         {
             case 1:
-                if(Current_Level == Level)
+                if(Current_Level == GameManager.Level)
                 {
                     enemy_mid.reset();
                 }
@@ -185,10 +184,10 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_123();
                 }
-                Current_Level = Level;
+                Current_Level = GameManager.Level;
                 break;
             case 2:
-                if (Current_Level == Level)
+                if (Current_Level == GameManager.Level)
                 {
                     enemy_mid.reset();
                 }
@@ -196,11 +195,11 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_123();
                 }
-                Current_Level = Level;
+                Current_Level = GameManager.Level;
 
                 break;
             case 3:
-                if (Current_Level == Level)
+                if (Current_Level == GameManager.Level)
                 {
                     enemy_mid.reset();
                 }
@@ -208,11 +207,11 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_123();
                 }
-                Current_Level = Level;
+                Current_Level = GameManager.Level;
 
                 break;
             case 4:
-                if (Current_Level == Level)
+                if (Current_Level == GameManager.Level)
                 {
                     enemy_left.reset();
                     enemy_right.reset();
@@ -221,11 +220,11 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_456();
                 }
-                Current_Level = Level;
+                Current_Level = GameManager.Level;
 
                 break;
             case 5:
-                if (Current_Level == Level)
+                if (Current_Level == GameManager.Level)
                 {
                     enemy_left.reset();
                     enemy_right.reset();
@@ -234,11 +233,11 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_456(); 
                 }
-                Current_Level = Level;
+                Current_Level = GameManager.Level;
 
                 break;
             case 6:
-                if (Current_Level == Level)
+                if (Current_Level == GameManager.Level)
                 {
                     enemy_left.reset();
                     enemy_right.reset();
@@ -247,11 +246,11 @@ public class Gameplay : MonoBehaviour
                 {
                     Level_type_456();
                 }
-                Current_Level = Level;
+                Current_Level = GameManager.Level;
 
                 break;
             case 7:
-                if (Current_Level == Level)
+                if (Current_Level == GameManager.Level)
                 {
                     enemy_left.reset();
                     enemy_right.reset();
