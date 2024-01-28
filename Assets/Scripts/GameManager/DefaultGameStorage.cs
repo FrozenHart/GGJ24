@@ -22,71 +22,71 @@ public static class DefaultGameStorage
     };
 
     #region
-    static HashSet<HumourType> AB = new HashSet<HumourType>() {
+    public static HashSet<HumourType> AB = new HashSet<HumourType>() {
 
         HumourType.A,
         HumourType.B
     };
 
-    static HashSet<HumourType> AC = new HashSet<HumourType>() {
+    public static HashSet<HumourType> AC = new HashSet<HumourType>() {
 
         HumourType.A,
         HumourType.C
     };
 
-    static HashSet<HumourType> AD = new HashSet<HumourType>() {
+    public static HashSet<HumourType> AD = new HashSet<HumourType>() {
 
         HumourType.A,
         HumourType.D
     };
 
-    static HashSet<HumourType> BC = new HashSet<HumourType>() {
+    public static HashSet<HumourType> BC = new HashSet<HumourType>() {
 
         HumourType.C,
         HumourType.B
     };
 
-    static HashSet<HumourType> BD = new HashSet<HumourType>() {
+    public static HashSet<HumourType> BD = new HashSet<HumourType>() {
 
         HumourType.D,
         HumourType.B
     };
 
-    static HashSet<HumourType> CD = new HashSet<HumourType>() {
+    public static HashSet<HumourType> CD = new HashSet<HumourType>() {
 
         HumourType.C,
         HumourType.D
     };
 
-    static HashSet<HumourType> ABC = new HashSet<HumourType>() {
+    public static HashSet<HumourType> ABC = new HashSet<HumourType>() {
 
         HumourType.A,
         HumourType.B,
         HumourType.C
     };
 
-    static HashSet<HumourType> ABD = new HashSet<HumourType>() {
+    public static HashSet<HumourType> ABD = new HashSet<HumourType>() {
 
         HumourType.A,
         HumourType.B,
         HumourType.D
     };
 
-    static HashSet<HumourType> ACD = new HashSet<HumourType>() {
+    public static HashSet<HumourType> ACD = new HashSet<HumourType>() {
 
         HumourType.A,
         HumourType.C,
         HumourType.D
     };
 
-    static HashSet<HumourType> BCD = new HashSet<HumourType>() {
+    public static HashSet<HumourType> BCD = new HashSet<HumourType>() {
 
         HumourType.C,
         HumourType.B,
         HumourType.D
     };
 
-    static HashSet<HumourType> super = new HashSet<HumourType>() {
+    public static HashSet<HumourType> super = new HashSet<HumourType>() {
         HumourType.A,
         HumourType.C,
         HumourType.B,

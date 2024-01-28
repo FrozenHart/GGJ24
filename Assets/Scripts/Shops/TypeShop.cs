@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class TypeShop : MonoBehaviour
     [SerializeField]
     private Button basicCard1, basicCard2, basicCard3, basicCard4, basicCard5, basicCard6, specialCard1, specialCard2, specialCard3, superCard;
 
-    private List<Button> basicButtons, specialButtons;
+    private List<Tuple<Button, HashSet<HumourType>>> basicButtons, specialButtons;
+    private Tuple<Button, HashSet<HumourType>> superButton;
 
     [SerializeField]
     private TMPro.TMP_Text shopType, coinCount;
@@ -27,8 +29,22 @@ public class TypeShop : MonoBehaviour
     {
         shopType.text = GameManager.currentShopType.ToString() + " Card Shop";
 
-        basicButtons = new List<Button>() { basicCard1, basicCard2, basicCard3, basicCard4, basicCard5, basicCard6 };
-        specialButtons = new List<Button>() { specialCard1, specialCard2, specialCard3 };
+        basicButtons = new List<Tuple<Button, HashSet<HumourType>>>() { 
+            new Tuple<Button, HashSet<HumourType>>(basicCard1, DefaultGameStorage.AB),
+            new Tuple<Button, HashSet<HumourType>>(basicCard2, DefaultGameStorage.AC),
+            new Tuple<Button, HashSet<HumourType>>(basicCard3, DefaultGameStorage.AD),
+            new Tuple<Button, HashSet<HumourType>>(basicCard4, DefaultGameStorage.BC),
+            new Tuple<Button, HashSet<HumourType>>(basicCard5, DefaultGameStorage.BD),
+            new Tuple<Button, HashSet<HumourType>>(basicCard6, DefaultGameStorage.CD)
+        };
+
+        specialButtons = new List<Tuple<Button, HashSet<HumourType>>>() {
+            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ABC),
+            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ABD),
+            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ACD)
+        };
+
+        superButton = new Tuple<Button, HashSet<HumourType>>(superCard, DefaultGameStorage.super);
 
         SetupAvailableCards();
         coinCount.text = GameManager.player.GetMana().ToString();
@@ -77,27 +93,48 @@ public class TypeShop : MonoBehaviour
         BuyCard(2);
     }
 
+    public void Card4_Click()
+    {
+        BuyCard(3);
+    }
+
+    public void Card5_Click()
+    {
+        BuyCard(4);
+    }
+
+    public void Card6_Click()
+    {
+        BuyCard(5);
+    }
+
     public void BuyCard(int num)
     {
-        if (num < 0 || num > 2) return;
-
         Player player = GameManager.player;
 
-        player.SetMana(player.GetMana() - costs[num]);
+        switch (GameManager.currentShopType)
+        {
+            case ShopType.Basic:
+                if (num < 0 || num > 6) return;
+                player.SetMana(player.GetMana() - costs[0]);
+                break;
+            case ShopType.Special:
+                if (num < 0 || num > 3) return;
+                player.SetMana(player.GetMana() - costs[1]);
+                break;
+            case ShopType.Super:
+                if (num < 0 || num > 1) return;
+                player.SetMana(player.GetMana() - costs[2]);
+                break;
+        }
+        
         coinCount.text = player.GetMana().ToString();
 
         ResetAll();
-        SetupAvailableCards(false);
-
-
-        int count = 0;
-        foreach (Button button in basicButtons)
-        {
-            button.interactable = player.GetMana() >= costs[count];
-        } 
+        SetupAvailableCards(); 
     }
 
-    private void SetupAvailableCards(bool renew = true)
+    private void SetupAvailableCards()
     {
         List<HashSet<HumourType>> availableHumours = new List<HashSet<HumourType>>();
 
@@ -107,15 +144,15 @@ public class TypeShop : MonoBehaviour
             case ShopType.Basic:
                 foreach (var card in basicButtons)
                 {
-                    card.gameObject.SetActive(true);
-                    card.interactable = player.GetMana() >= costs[0];
+                    card.Item1.gameObject.SetActive(true);
+                    card.Item1.interactable = player.GetMana() >= costs[0];
                 }
                 break;
             case ShopType.Special:
                 foreach (var card in specialButtons)
                 {
-                    card.gameObject.SetActive(true);
-                    card.interactable = player.GetMana() >= costs[1];
+                    card.Item1.gameObject.SetActive(true);
+                    card.Item1.interactable = player.GetMana() >= costs[1];
                 }
                 break;
             case ShopType.Super:
@@ -129,12 +166,12 @@ public class TypeShop : MonoBehaviour
     {
         foreach (var card in basicButtons)
         {
-            card.gameObject.SetActive(false);
+            card.Item1.gameObject.SetActive(false);
         }
 
         foreach (var card in specialButtons)
         {
-            card.gameObject.SetActive(false);
+            card.Item1.gameObject.SetActive(false);
         }
 
         superCard.gameObject.SetActive(false);

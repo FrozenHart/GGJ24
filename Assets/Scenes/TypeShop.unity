@@ -1125,7 +1125,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 100975674}
         m_TargetAssemblyTypeName: TypeShop, Assembly-CSharp
-        m_MethodName: Card3_Click
+        m_MethodName: Card1_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1903,7 +1903,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 100975674}
         m_TargetAssemblyTypeName: TypeShop, Assembly-CSharp
-        m_MethodName: Card2_Click
+        m_MethodName: Card5_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2620,7 +2620,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 100975674}
         m_TargetAssemblyTypeName: TypeShop, Assembly-CSharp
-        m_MethodName: Card1_Click
+        m_MethodName: Card4_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3598,7 +3598,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 100975674}
         m_TargetAssemblyTypeName: TypeShop, Assembly-CSharp
-        m_MethodName: Card3_Click
+        m_MethodName: Card6_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
