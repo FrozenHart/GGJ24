@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame_OnClick()
     {
-        SceneManager.LoadSceneAsync("Shop");
         GameManager.StartNewGame();
+        SceneManager.LoadScene("Shop"); 
     }
 
     public void ShowHowToPlay_OnClick()
