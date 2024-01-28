@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System;
+using System.Security.Cryptography;
 
-public static class DefaultGameStorage
-{
+public static class DefaultGameStorage 
+{ 
+   
     public static List<Enemy> enemyList = new List<Enemy>()
     {
         new Enemy(0.5f,new Tuple<HumourType, HumourType>(HumourType.C,HumourType.D),HumourType.A),
@@ -19,6 +21,7 @@ public static class DefaultGameStorage
         new Enemy(0.5f,new Tuple<HumourType, HumourType>(HumourType.A,HumourType.B),HumourType.D),
     };
 
+    #region
     static HashSet<HumourType> AB = new HashSet<HumourType>() {
 
         HumourType.A,
@@ -89,35 +92,33 @@ public static class DefaultGameStorage
         HumourType.B,
         HumourType.D
     };
-
+    #endregion
 
     public static List<Card> GameCards = new List<Card>() {
 
-        new Card("Porque � que a galinha atravessou a estrada?", -1, AB, 0.1f, "Para ir para o outro lado da rua!", ShopType.Basic),
-        new Card("De que cor � o cavalo branco de napole�o", -1, AB, 0.1f, "...", ShopType.Basic),
-        new Card("Qual � o t�tulo de uma not�cia em que uma baleia mata outra a tiro?", -1, AC, 0.1f, "Baleia baleia baleia.", ShopType.Basic),
-        new Card("Como � que se chama um c�o sem patas?", -1, AC, -1, "N�o se chama vai se buscar.", ShopType.Basic),
-        new Card("Como � que se chama o protagonista do Dragon Ball com hemorroidas", -1, AD, -1, "San grocu.", ShopType.Basic),
-        new Card("truz-truz!", -1, AD, -1, "Quem �?\ntruz-truz!\nQuem �?\ntruz-truz!\nQuem �?...", ShopType.Basic),
-        new Card("Porque � que o peiDe congelado � mais caro que o peiDe fresco?", -1, BC, -1,
-            "Porque o peiDe congelado inclui a sobremesa.", ShopType.Basic),
-        new Card("O que � que o Kurt Cobain e o Michaelangelo t�m em comum?", -1, BC, -1,
-            "Ambos usaram o seu cerebro para pintar o teto", ShopType.Basic),
-        new Card("Conversa entre dois licenciados", -1, BD, -1, "-Era um BigMac por favor", ShopType.Basic),
-        new Card("Havia um c�o que respirava pelo cu.", -1, BD, -1, "Sentou-se e morreu", ShopType.Basic),
-        new Card("O que fazem duas cenouras a discutir?", -1, CD, -1, "Polui��o cenoura", ShopType.Basic),
-        new Card("-Vamos comer crian�as!", -1, CD, -1, "-Vamos comer, crian�as!\nUsem virgulas e salvem vidas!", ShopType.Basic),
-        /*new Card("Quantos beb�s s�o precisos para mudar a luz da minha cave?", -1, ABC, -1, 
-            "Aparentemente mais que vinte porque a minha cave continua �s escuras", ShopType.Special),
-        new Card("O que � que acontece quando misturas adn de tigre com adn humano", -1, ABC, -1,
-            "�s eDpulso do jardim zool�gico", ShopType.Special),*/
-        new Card("", -1, ABD, -1, "desc15", ShopType.Special),
-        new Card("carta16", -1, ABD, -1, "desc16", ShopType.Special),
-        new Card("carta17", -1, ACD, -1, "desc17", ShopType.Special),
-        new Card("carta18", -1, ACD, -1, "desc18", ShopType.Special),
-        new Card("carta19", -1, BCD, -1, "desc19", ShopType.Special),
-        new Card("carta20", -1, BCD, -1, "desc20", ShopType.Special),
-        new Card("", -1, super, -1, "", ShopType.Super)
+        new Card("Why did the chicken cross the road?", -1, AB, 0.1f, "To get to the other side!", ShopType.Basic),
+        new Card("Did you know that if your feet smell and your nose runs...", -1, AB, 0.1f, "...you're built updside down!", ShopType.Basic),
+        new Card("Sometimes i relate to fortnite...", -1, AC, 0.1f, "...I know how it is to only get played by 12y olds.", ShopType.Basic),
+        new Card("Just met Darth Vader's corrupt cousin.", -1, AC, 0.1f, "Taxi Vader.", ShopType.Basic),
+        new Card("Why did the tomato turn red?", -1, AD, 0.1f, "It saw the sallad dressing.", ShopType.Basic),
+        new Card("What did the \"p\" say to the \"q\"?", -1, AD, 0.1f, "Who the fuck put a mirror in front of me!?", ShopType.Basic),
+        new Card("Knock-knock!", -1, BC, 0.1f,
+            "Who's there? Knock-knock! Who's there? Knock-knock! Who's there? Knock-knock!...", ShopType.Basic),
+        new Card("Did an air guitar at a party last week...", -1, BC, 0.1f,
+            "The mime next door came around to complain.", ShopType.Basic),
+        new Card("What do sea monsters eat", -1, BD, 0.1f, "Fish and ships", ShopType.Basic),
+        new Card("Sex is my Cardio...", -1, BD, 0.1f, "That explains why I'm still fat", ShopType.Basic),
+        new Card("What's red and bad for your teeth?", -1, CD, 0.1f, "A brick!", ShopType.Basic),
+        new Card("What's red and hurts when thrown at you?", -1, CD, 0.1f, "A brick!", ShopType.Basic),
+        new Card("I hate 9/11 jokes...", -1, ABC, 0.1f, "They always crash and burn.", ShopType.Special),
+        new Card("Why does 10 have PTSD", -1, ABC, 0.1f, "It was in the middle of 9 and 11", ShopType.Special),
+        new Card("I have a logic fetish...", -1, ABD, 0.1f, "I just can't coming to conclusions", ShopType.Special),
+        new Card("I would make a gay joke...", -1, ABD, 0.1f, "Butt fuck it.", ShopType.Special),
+        new Card("I just farted in my wallet...", -1, ACD, 0.1f, "Now i have Gas money.", ShopType.Special),
+        new Card("Most people have 32 teeth...", -1, ACD, 0.1f, "Some have 4, it's just simply meth.", ShopType.Special),
+        new Card("I just discovered I have low IQ...", -1, BCD, 0.1f, "I was dumbfounded!", ShopType.Special),
+        new Card("Why is the sun so smart...", -1, BCD, 0.1f, "It has a lot of degrees!", ShopType.Special),
+        new Card("", -1, super, 0.1f, "", ShopType.Super)
 
     };
 
