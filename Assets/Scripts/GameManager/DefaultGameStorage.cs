@@ -106,6 +106,7 @@ public static class DefaultGameStorage
         new Card("carta10", -1, BD, -1, "desc10", ShopType.Basic),
         new Card("Qual é a parte mais dificil de comer num vegetal?", -1, CD, -1, "A cadeira de rodas", ShopType.Basic),
         new Card("O que é pior que um bebé dentro de um caixote do lixo?", -1, CD, -1, "Um bebé dentro de dois", ShopType.Basic),
+
         new Card("Quantos bebés são precisos para mudar a luz da minha cave?", -1, ABC, -1, "Aparentemente mais que vinte porque a minha cave continua às escuras", ShopType.Special),
         new Card("O que é que acontece quando misturas adn de tigre com adn humano", -1, ABC, -1,
             "És expulso do jardim zoológico", ShopType.Special),
@@ -115,6 +116,7 @@ public static class DefaultGameStorage
         new Card("carta18", -1, ACD, -1, "desc18", ShopType.Special),
         new Card("carta19", -1, BCD, -1, "desc19", ShopType.Special),
         new Card("carta20", -1, BCD, -1, "desc20", ShopType.Special),
+
         new Card("Cópia Barata do Especial do Dave Chapelle", -1, super, -1, "Acabou-se a inspiração", ShopType.Super)
     };
 }
