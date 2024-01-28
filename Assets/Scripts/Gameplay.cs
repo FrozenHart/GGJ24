@@ -74,7 +74,6 @@ public class Gameplay : MonoBehaviour
                     Pass = true;
                 }
             }
-            waitForConfirm = true;
             if (Pass) { 
                 GameManager.Nexlev();
             }
@@ -82,7 +81,6 @@ public class Gameplay : MonoBehaviour
             {
                 GameManager.player.TakeDamage();
             }
-            while (waitForConfirm) { }
             SceneManager.LoadScene("Shop");
         }
         else
