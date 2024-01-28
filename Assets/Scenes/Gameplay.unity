@@ -1229,7 +1229,7 @@ MonoBehaviour:
   stats1: {fileID: 1383734248}
   stats2: {fileID: 1184254890}
   stats3: {fileID: 1534029142}
-  Levelnumb: {fileID: 0}
+  Levelnumb: {fileID: 243547705}
   CoinCount: {fileID: 1675782136}
   Enemy_Mid: {fileID: 1470273637}
   Enemy_Left: {fileID: 1524369903}

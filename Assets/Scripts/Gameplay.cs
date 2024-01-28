@@ -67,7 +67,7 @@ public class Gameplay : MonoBehaviour
                 }
             }
             if(Pass) { GameManager.Nexlev(); }
-            SceneManager.LoadSceneAsync("Shop");
+            SceneManager.LoadScene("Shop");
         }
         else
         {
@@ -187,7 +187,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_123();
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite= Resources.Load<Sprite>("Sprites/1.png") ;
+                Levelnumb.GetComponent<SpriteRenderer>().sprite= Resources.Load<Sprite>("Sprites/1") ;
                 break;
             case 2:
                 if (Current_Level == GameManager.Level)
@@ -199,7 +199,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_123();
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/2.png");
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/2");
 
                 break;
             case 3:
@@ -212,7 +212,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_123();
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/3.png");
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/3");
                 break;
             case 4:
                 if (Current_Level == GameManager.Level)
@@ -225,7 +225,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_456();
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/4.png");
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/4");
 
                 break;
             case 5:
@@ -239,7 +239,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_456(); 
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/5.png");
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/5");
 
                 break;
             case 6:
@@ -253,7 +253,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_456();
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/6.png");
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/6");
 
                 break;
             case 7:
@@ -268,7 +268,7 @@ public class Gameplay : MonoBehaviour
                     Level_type_7();
                 }
                 Current_Level = GameManager.Level;
-                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/7.png");
+                Levelnumb.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/7");
                 break;
         }
     }
@@ -524,7 +524,7 @@ public class Gameplay : MonoBehaviour
             for(int x=0;x<5;x++)
             {
                 int indexcard = new System.Random().Next(0, GameManager.player.GetInventory().Count);
-                foreach(var item in DefaultGameStorage.GameCards)
+                foreach(Card item in DefaultGameStorage.GameCards)
                 {
                     if(GameManager.player.GetInventory()[indexcard]==item)
                     {
