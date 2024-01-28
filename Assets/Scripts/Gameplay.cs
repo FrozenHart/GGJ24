@@ -13,11 +13,11 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3,Levelnumb,CoinCount,LifeCount;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1, CardSpot_2, CardSpot_3, CardSpot_12, CardSpot_23, stats1, stats2, stats3, Levelnumb, CoinCount;//,LifeCount;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     [SerializeField]
-    private GameObject s1l1, s1l2, s1d, s2l1, s2l2, s2d, s3l1, s3l2, s3d;
+    //private GameObject s1l1, s1l2, s1d, s2l1, s2l2, s2d, s3l1, s3l2, s3d;
     public Animator Enemy_Mid_Animator, Enemy_Left_Animator, Enemy_Right_Animator;
     private Enemy enemy_mid, enemy_left, enemy_right;
     private Card card1, card2, card3;
@@ -27,7 +27,7 @@ public class Gameplay : MonoBehaviour
     private bool Pass = false;
     private int index = 0;
     public bool allhappy;
-    private Sprite A= Resources.Load<Sprite>("Sprites/icons/A"), B = Resources.Load<Sprite>("Sprites/icons/B"), C = Resources.Load<Sprite>("Sprites/icons/C"), D = Resources.Load<Sprite>("Sprites/icons/D");
+    //private Sprite A= Resources.Load<Sprite>("Sprites/icons/A"), B = Resources.Load<Sprite>("Sprites/icons/B"), C = Resources.Load<Sprite>("Sprites/icons/C"), D = Resources.Load<Sprite>("Sprites/icons/D");
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +42,11 @@ public class Gameplay : MonoBehaviour
         GameManager.player.AddCard(DefaultGameStorage.GameCards[5]);
         NexLevel();
         Get_Inicial_Cards();
-        Set_Cards();
         Set_Hand();
+        Set_Cards();
+
         CoinCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetMana().ToString();
-        LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
+       // LifeCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetLife().ToString();
     }
     private void FixedUpdate()
     {
@@ -131,10 +132,10 @@ public class Gameplay : MonoBehaviour
         Hide_All();
         int enemyidm = new System.Random().Next(0, 12);
         enemy_mid = DefaultGameStorage.enemyList[enemyidm];
-        stats2.SetActive(true);
+        /*stats2.SetActive(true);
         s1d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
         s1l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
-        s1l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
+        s1l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);*/
         Level1 = true;
         Level2 = false;
         Level3 = false;
@@ -148,7 +149,7 @@ public class Gameplay : MonoBehaviour
         int enemyidr = new System.Random().Next(0, 12);
         enemy_left = DefaultGameStorage.enemyList[enemyidl];
         enemy_right = DefaultGameStorage.enemyList[enemyidr];
-        stats1.SetActive(true);
+        /*stats1.SetActive(true);
         stats3.SetActive(true);
 
         s2d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
@@ -156,7 +157,7 @@ public class Gameplay : MonoBehaviour
         s2l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
         s3d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
         s3l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
-        s3l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
+        s3l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);*/
         Level2 = true;
         Level1 = false;
         Level3 = false;
@@ -174,7 +175,7 @@ public class Gameplay : MonoBehaviour
         enemy_mid = DefaultGameStorage.enemyList[enemyidm];
         enemy_left = DefaultGameStorage.enemyList[enemyidl];
         enemy_right = DefaultGameStorage.enemyList[enemyidr];
-        stats1.SetActive(true);
+        /*stats1.SetActive(true);
         stats3.SetActive(true);
         stats2.SetActive(true);
 
@@ -186,7 +187,7 @@ public class Gameplay : MonoBehaviour
         s2l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
         s3d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
         s3l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
-        s3l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
+        s3l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);*/
         Level3 = true;
         Level2 = false;
         Level1 = false;
@@ -335,6 +336,7 @@ public class Gameplay : MonoBehaviour
             enemy_right.Action(card1);
         }
         Set_Cards();
+
     }
     public void Select_Card_2()
     {
@@ -470,6 +472,7 @@ public class Gameplay : MonoBehaviour
             }
             card1 = GameManager.player.GetHand()[index];
         }
+        Update_cards();
     }
 
     public void Rotate_left() 
@@ -488,6 +491,7 @@ public class Gameplay : MonoBehaviour
             }
             card3 = GameManager.player.GetHand()[index];
         }
+        Update_cards();
     }
 
     public void Set_Hand()
@@ -519,7 +523,8 @@ public class Gameplay : MonoBehaviour
             CardSpot_1.SetActive(true);
             CardSpot_2.SetActive(true);
             CardSpot_3.SetActive(true);
-        }   
+        }
+        Update_cards();
     }
 
     private void Hide_Cards()
@@ -570,7 +575,6 @@ public class Gameplay : MonoBehaviour
                     if(GameManager.player.GetInventory()[indexcard]==item)
                     {
                         GameManager.player.AddCard_ToHand(item);
-                        Debug.Log("adicionou carta");
                     }
                 }
             }
@@ -610,7 +614,7 @@ public class Gameplay : MonoBehaviour
         cardDialog.SetActive(false);
         waitForConfirm = false;
     }
-    private Sprite Get_Sprite(HumourType t)
+   /* private Sprite Get_Sprite(HumourType t)
     {
         if(t== HumourType.A)
         {
@@ -628,7 +632,7 @@ public class Gameplay : MonoBehaviour
         {
             return D;
         }
-    }
+    }*/
     private void Update_cards()
     {
         if(CardSpot_1.active == true)
@@ -637,16 +641,19 @@ public class Gameplay : MonoBehaviour
         }
         if (CardSpot_2.active == true)
         {
-            CardSpot_1.GetComponent<Image>().sprite = card1.Get_Image();
+            CardSpot_2.GetComponent<Image>().sprite = card2.Get_Image();
         }
         if (CardSpot_3.active == true)
         {
-            CardSpot_12.GetComponent<Image>().sprite = card1.Get_Image();
+            CardSpot_3.GetComponent<Image>().sprite = card3.Get_Image();
         }
-        if (CardSpot_23.active == true)
+        if (CardSpot_12.active == true)
         {
             CardSpot_1.GetComponent<Image>().sprite = card1.Get_Image();
         }
-
+        if (CardSpot_23.active == true)
+        {
+            CardSpot_23.GetComponent<Image>().sprite = card2.Get_Image();
+        }
     }
 }
