@@ -23,8 +23,6 @@ public class Enemy
     public void Action(Card card)
     {
         float LaughPower=card.GetLaughPower();
-        
-       
         foreach (HumourType card_humor in card.GetEffects())
         {
             if ((Likes.Item1 == card_humor) || (Likes.Item2 == card_humor))
@@ -36,7 +34,7 @@ public class Enemy
                 LaughPower -= 0.2f;
             }
         }
-        if(boringness+LaughPower>100)
+        if(boringness+LaughPower>1f)
         {
             boringness = 1f;
         }
