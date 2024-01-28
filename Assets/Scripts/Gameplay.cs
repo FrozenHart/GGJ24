@@ -657,7 +657,7 @@ public class Gameplay : MonoBehaviour
         }
         if (CardSpot_23.active == true)
         {
-            CardSpot_23.GetComponent<Image>().sprite = card2.Get_Image();
+            CardSpot_23.GetComponent<Image>().sprite = card3.Get_Image();
         }
     }
 }
