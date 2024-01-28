@@ -25,7 +25,7 @@ public class Card
 
     public ShopType GetCardType()
     {
-        return type;
+        return Tipo;
     }
 
     public string GetName()
