@@ -93,9 +93,6 @@ public class Card
     {
         return obj is Card card &&
                name == card.name &&
-               manaCost == card.manaCost &&
-               EqualityComparer<HashSet<HumourType>>.Default.Equals(effects, card.effects) &&
-               laughPower == card.laughPower &&
                description == card.description;
     }
 

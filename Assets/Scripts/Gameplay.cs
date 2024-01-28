@@ -21,27 +21,29 @@ public class Gameplay : MonoBehaviour
     private bool Level1 = false, Level2 = false, Level3 = false;
     private int Current_Level = 0;
     public object Midle_Slicder { get; private set; }
-    bool Pass = false;
-    int index = 0;
-    public int numberofcardsrdsr;
+    private bool Pass = false;
+    private int index = 0;
+    public bool allhappy;
     // Start is called before the first frame update
     void Start()
     {
         confirmationDialog.SetActive(false);
-        //temp 
-        GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[0]);
-        GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[1]);
-        GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[2]);
         Pass = false;
-
+        allhappy = false;
+        GameManager.player.AddCard(DefaultGameStorage.GameCards[0]);
+        GameManager.player.AddCard(DefaultGameStorage.GameCards[1]);
+        GameManager.player.AddCard(DefaultGameStorage.GameCards[2]);
+        GameManager.player.AddCard(DefaultGameStorage.GameCards[4]);
+        GameManager.player.AddCard(DefaultGameStorage.GameCards[5]);
+        NexLevel();
+        Get_Inicial_Cards();
         Set_Cards();
         Set_Hand();
-        NexLevel();
     }
     private void FixedUpdate()
     {
-        numberofcardsrdsr = GameManager.player.GetHand().Count;
-        if ((GameManager.player.GetHand().Count==0) || ((enemy_mid.Get_LaughPower() == 1f) && (enemy_right.Get_LaughPower() ==1f) && (enemy_left.Get_LaughPower() == 1f)))
+        CheckAllHappy();
+        if ((GameManager.player.GetHand().Count==0) || allhappy)
         {
             if(Level1)
             {
@@ -65,7 +67,7 @@ public class Gameplay : MonoBehaviour
                 }
             }
             if(Pass) { GameManager.Nexlev(); }
-            
+            SceneManager.LoadSceneAsync("Shop");
         }
         else
         {
@@ -266,7 +268,14 @@ public class Gameplay : MonoBehaviour
 
     public void Select_Card_1()
     {
-        GameManager.player.RemoveCardFromHand(card1);
+        if (GameManager.player.GetHand().Count == 1)
+        {
+            GameManager.player.Reset_Hand();
+        }
+        else
+        {
+            GameManager.player.RemoveCardFromHand(card1);
+        }
         index--;
         if(Level1)
         {
@@ -287,7 +296,14 @@ public class Gameplay : MonoBehaviour
     }
     public void Select_Card_2()
     {
-        GameManager.player.RemoveCardFromHand(card2);
+        if (GameManager.player.GetHand().Count == 1)
+        {
+            GameManager.player.Reset_Hand();
+        }
+        else
+        {
+            GameManager.player.RemoveCardFromHand(card2);
+        }
         index--;
         if (Level1)
         {
@@ -308,6 +324,14 @@ public class Gameplay : MonoBehaviour
     }
     public void Select_Card_3()
     {
+        if (GameManager.player.GetHand().Count == 1)
+        {
+            GameManager.player.Reset_Hand();
+        }
+        else
+        {
+            GameManager.player.RemoveCardFromHand(card3);
+        }
         index--;
         if (Level1)
         {
@@ -324,13 +348,19 @@ public class Gameplay : MonoBehaviour
             enemy_left.Action(card3);
             enemy_right.Action(card3);
         }
-        GameManager.player.RemoveCardFromHand(card3);
         Set_Cards();
     }
 
     public void Select_Card_12() 
     {
-        GameManager.player.RemoveCardFromHand(card1);
+        if (GameManager.player.GetHand().Count == 1)
+        {
+            GameManager.player.Reset_Hand();
+        }
+        else
+        {
+            GameManager.player.RemoveCardFromHand(card1);
+        }
         index--;
         if (Level1)
         {
@@ -350,7 +380,14 @@ public class Gameplay : MonoBehaviour
         Set_Cards();
     }
     public void Select_Card_23() {
-        GameManager.player.RemoveCardFromHand(card2);
+        if(GameManager.player.GetHand().Count == 1)
+        {
+            GameManager.player.Reset_Hand();
+        }
+        else { 
+            GameManager.player.RemoveCardFromHand(card2); 
+        }
+        
         index--;
         if (Level1)
         {
@@ -362,7 +399,7 @@ public class Gameplay : MonoBehaviour
             enemy_right.Action(card2);
         }
         else
-        {
+        { 
             enemy_mid.Action(card2);
             enemy_left.Action(card2);
             enemy_right.Action(card2);
@@ -372,32 +409,39 @@ public class Gameplay : MonoBehaviour
 
     public void Rotate_right()
     {
-        card3 = card2;
-        card2 = card1;
-        if(index+1>GameManager.player.GetHand().Count-1)
+        if (GameManager.player.GetHand().Count != 2)
         {
-            index++;
+        
+            card3 = card2;
+            card2 = card1;
+            if (index + 1 > GameManager.player.GetHand().Count - 1)
+            {
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
+            card1 = GameManager.player.GetHand()[index];
         }
-        else
-        {
-            index= 0;
-        }
-        card1 = GameManager.player.GetHand()[index];
     }
 
     public void Rotate_left() 
     {
-        card1 = card2;
-        card2 = card3;
-        if (index - 1 > 0)
+        if (GameManager.player.GetHand().Count != 2)
         {
-            index--;
+            card1 = card2;
+            card2 = card3;
+            if (index - 1 > 0)
+            {
+                index--;
+            }
+            else
+            {
+                index = GameManager.player.GetHand().Count - 1;
+            }
+            card3 = GameManager.player.GetHand()[index];
         }
-        else
-        {
-            index = GameManager.player.GetHand().Count-1;
-        }
-        card3 = GameManager.player.GetHand()[index];
     }
 
     public void Set_Hand()
@@ -423,17 +467,13 @@ public class Gameplay : MonoBehaviour
             Hide_Cards();
             CardSpot_2.SetActive(true);
         }
-        else if(numb_of_cards == 0)
-        {
-            return;
-        }
-        else
+        else if(GameManager.player.GetHand().Any<Card>())
         {
             Hide_Cards();
             CardSpot_1.SetActive(true);
             CardSpot_2.SetActive(true);
             CardSpot_3.SetActive(true);
-        }
+        }   
     }
 
     private void Hide_Cards()
@@ -444,5 +484,63 @@ public class Gameplay : MonoBehaviour
         CardSpot_12.SetActive(false);
         CardSpot_23.SetActive(false);
 
+    }
+
+    private void CheckAllHappy()
+    {
+        if(Level1)
+        {
+            if (enemy_mid.Get_LaughPower()==1f)
+            {
+                allhappy= true;
+            }
+        }
+        else if(Level2) 
+        {
+            if((enemy_right.Get_LaughPower() == 1f) && (enemy_left.Get_LaughPower() >= 1f))
+            {
+                allhappy= true;
+            }
+        }
+        else if (Level3)
+        {
+            if ((enemy_right.Get_LaughPower() == 1f) && (enemy_left.Get_LaughPower() >= 1f) && (enemy_mid.Get_LaughPower() == 1f))
+            {
+                allhappy = true;
+            }
+        }
+    }
+    private void Get_Inicial_Cards()
+    {
+        if(Level1)
+        {
+            for(int x=0;x<5;x++)
+            {
+                int indexcard = new System.Random().Next(0, GameManager.player.GetInventory().Count);
+                foreach(var item in DefaultGameStorage.GameCards)
+                {
+                    if(GameManager.player.GetInventory()[indexcard]==item)
+                    {
+                        GameManager.player.AddCard_ToHand(item);
+                    }
+                }
+            }
+        }
+        else if(Level2)//5
+        {
+            for (int x = 0; x < 7; x++)
+            {
+                int indexcard = new System.Random().Next(0, GameManager.player.GetInventory().Count);
+                GameManager.player.AddCard_ToHand(GameManager.player.GetInventory()[indexcard]);
+            }
+        }
+        else if(Level3)//7
+        {
+            for (int x = 0; x < 10; x++)
+            {
+                int indexcard = new System.Random().Next(0, GameManager.player.GetInventory().Count);
+                GameManager.player.AddCard_ToHand(GameManager.player.GetInventory()[indexcard]);
+            }
+        }
     }
 }

@@ -37,4 +37,6 @@ public class Player
     {
         hand.Remove(card);
     }
+    public void Reset_Hand()
+    { hand.Clear(); }
 } 
