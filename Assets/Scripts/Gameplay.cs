@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using System.Linq;
 using Unity.PlasticSCM.Editor.WebApi;
+using TMPro;
 
 public class Gameplay : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Gameplay : MonoBehaviour
     private bool Pass = false;
     private int index = 0;
     public bool allhappy;
+    private Sprite A= Resources.Load<Sprite>("Sprites/icons/A"), B = Resources.Load<Sprite>("Sprites/icons/B"), C = Resources.Load<Sprite>("Sprites/icons/C"), D = Resources.Load<Sprite>("Sprites/icons/D");
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class Gameplay : MonoBehaviour
         Get_Inicial_Cards();
         Set_Cards();
         Set_Hand();
+        CoinCount.GetComponent<TMPro.TMP_Text>().text = GameManager.player.GetMana().ToString();
     }
     private void FixedUpdate()
     {
@@ -490,7 +493,9 @@ public class Gameplay : MonoBehaviour
         CardSpot_3.SetActive(false);
         CardSpot_12.SetActive(false);
         CardSpot_23.SetActive(false);
-
+        stats1.SetActive(false);
+        stats2.SetActive(false);
+        stats3.SetActive(false);
     }
 
     private void CheckAllHappy()
