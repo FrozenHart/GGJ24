@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Shop : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4;
+    private GameObject ShopLoop1, ShopLoop2, ShopLoop3, ShopLoop4, InvalidDialog;
     [SerializeField]
     private TMPro.TMP_Text coinCount;
 
@@ -40,9 +40,26 @@ public class Shop : MonoBehaviour
 
     public void GoBack_OnClick()
     {
+        if (GameManager.Level >= 3 && GameManager.player.GetInventory().Count < 7)
+        {
+            InvalidDialog.SetActive(true);
+            return;
+        }
+
+        if (GameManager.Level >= 5 && GameManager.player.GetInventory().Count < 10)
+        {
+            InvalidDialog.SetActive(true);
+            return;
+        }
+
         isLoaded = false;
         GameManager.currentShopLoopFrame = 0;
         SceneManager.LoadSceneAsync("Gameplay");
+    }
+
+    public void CloseDialog_OnClick()
+    {
+        InvalidDialog.SetActive(false);
     }
 
     public void GetMoney_Click()

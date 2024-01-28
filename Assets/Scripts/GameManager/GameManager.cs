@@ -18,10 +18,12 @@ public static class GameManager
     {
         player = new Player();
     }
+
     public static void Nexlev()
     {
         Level++;
     }
+
     internal static List<Card> GetCards(ShopType? currentShopType)
     {
         List<Card> cards = new List<Card>();
