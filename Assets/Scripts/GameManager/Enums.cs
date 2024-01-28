@@ -10,5 +10,5 @@ public enum HumourType
     Banana,
     Intelligent,
     Dark,
-    x,
+    x
 }

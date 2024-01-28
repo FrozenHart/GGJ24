@@ -10,16 +10,17 @@ public class Card
     private HashSet<HumourType> effects;
     private int laughPower;
     private string description;
-    private ShopType type;
+    private ShopType Tipo;
 
-    public Card(string name, int manaCost, HashSet<HumourType> effects, int laughPower, string description, ShopType type)
+    public Card(string name, int manaCost, HashSet<HumourType> effects, int laughPower, string description, ShopType shopType)
     {
         setName(name);
         setEffects(effects);
         setManaCost(manaCost);
         SetLaughPower(laughPower);
         SetDescription(description);
-        this.type = type;
+        SetTipo(shopType);
+        
     }
 
     public ShopType GetCardType()
@@ -71,6 +72,16 @@ public class Card
     public void SetDescription(string description)
     {
         this.description = description;
+    }
+
+    public ShopType GetShopType()
+    {
+        return this.Tipo;
+    }
+
+    public void SetTipo(ShopType tipo)
+    {
+        this.Tipo = tipo;
     }
 
     public override bool Equals(object obj)
