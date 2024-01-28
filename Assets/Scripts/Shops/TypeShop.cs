@@ -30,21 +30,21 @@ public class TypeShop : MonoBehaviour
         shopType.text = GameManager.currentShopType.ToString() + " Card Shop";
 
         basicButtons = new List<Tuple<Button, HashSet<HumourType>>>() { 
-            new Tuple<Button, HashSet<HumourType>>(basicCard1, DefaultGameStorage.AB),
-            new Tuple<Button, HashSet<HumourType>>(basicCard2, DefaultGameStorage.AC),
-            new Tuple<Button, HashSet<HumourType>>(basicCard3, DefaultGameStorage.AD),
-            new Tuple<Button, HashSet<HumourType>>(basicCard4, DefaultGameStorage.BC),
-            new Tuple<Button, HashSet<HumourType>>(basicCard5, DefaultGameStorage.BD),
-            new Tuple<Button, HashSet<HumourType>>(basicCard6, DefaultGameStorage.CD)
+            new Tuple<Button, HashSet<HumourType>>(basicCard1, DefaultGameStorage.AB), // magenta_yellow
+            new Tuple<Button, HashSet<HumourType>>(basicCard2, DefaultGameStorage.AC), // yellow_green
+            new Tuple<Button, HashSet<HumourType>>(basicCard3, DefaultGameStorage.AD), // green_magenta
+            new Tuple<Button, HashSet<HumourType>>(basicCard4, DefaultGameStorage.BC), // purple_green
+            new Tuple<Button, HashSet<HumourType>>(basicCard5, DefaultGameStorage.BD), // purple_magenta
+            new Tuple<Button, HashSet<HumourType>>(basicCard6, DefaultGameStorage.CD) // yellow_purple
         };
 
         specialButtons = new List<Tuple<Button, HashSet<HumourType>>>() {
-            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ABC),
-            new Tuple<Button, HashSet<HumourType>>(specialCard2, DefaultGameStorage.ABD),
-            new Tuple<Button, HashSet<HumourType>>(specialCard3, DefaultGameStorage.ACD)
+            new Tuple<Button, HashSet<HumourType>>(specialCard1, DefaultGameStorage.ABC), // specialcard1
+            new Tuple<Button, HashSet<HumourType>>(specialCard2, DefaultGameStorage.ABD), // specialcard2
+            new Tuple<Button, HashSet<HumourType>>(specialCard3, DefaultGameStorage.ACD) // specialcard3
         };
 
-        superButton = new Tuple<Button, HashSet<HumourType>>(superCard, DefaultGameStorage.super);
+        superButton = new Tuple<Button, HashSet<HumourType>>(superCard, DefaultGameStorage.super); // supercard
 
         SetupAvailableCards();
         coinCount.text = GameManager.player.GetMana().ToString();
