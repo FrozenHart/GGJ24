@@ -120,7 +120,7 @@ public static class DefaultGameStorage
         new Card("Most people have 32 teeth...", -1, ACD, 0.1f, "Some have 4, it's just simply meth.", ShopType.Special),
         new Card("I just discovered I have low IQ...", -1, BCD, 0.1f, "I was dumbfounded!", ShopType.Special),
         new Card("Why is the sun so smart...", -1, BCD, 0.1f, "It has a lot of degrees!", ShopType.Special),
-        new Card("", -1, super, 0.1f, "", ShopType.Super)
+        new Card("fart", -1, super, 0.1f, "...", ShopType.Super)
 
     };
 
