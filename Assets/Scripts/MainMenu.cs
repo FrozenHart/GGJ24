@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject howtoplayDialog;
+
     public void Quit_OnClick()
     {
         Application.Quit();
@@ -13,6 +16,16 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Gameplay");
         GameManager.StartNewGame();
+    }
+
+    public void ShowHowToPlay_OnClick()
+    {
+        howtoplayDialog.SetActive(true);
+    }
+
+    public void CloseHowToPlay_OnClick()
+    {
+        howtoplayDialog.SetActive(false);
     }
 
     // Start is called before the first frame update

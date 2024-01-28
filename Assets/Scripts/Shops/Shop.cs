@@ -40,13 +40,19 @@ public class Shop : MonoBehaviour
 
     public void GoBack_OnClick()
     {
-        if (GameManager.Level >= 3 && GameManager.player.GetInventory().Count < 7)
+        if (GameManager.player.GetInventory().Count < 5)
         {
             InvalidDialog.SetActive(true);
             return;
         }
 
-        if (GameManager.Level >= 5 && GameManager.player.GetInventory().Count < 10)
+        if (GameManager.Level > 3 && GameManager.player.GetInventory().Count < 7)
+        {
+            InvalidDialog.SetActive(true);
+            return;
+        }
+
+        if (GameManager.Level > 5 && GameManager.player.GetInventory().Count < 10)
         {
             InvalidDialog.SetActive(true);
             return;

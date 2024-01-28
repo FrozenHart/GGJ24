@@ -996,8 +996,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "You don't have enough cards in your inventory to proceed! Please buy some
-    more.\n\nRequirements: \n- 7 cards minimum if the level is greater than 3\n-
-    10 cards mininum if the level is grater than 5"
+    more.\n\nRequirements: \n- 5 cards minimum if the level is lower than 3\n- 7
+    cards minimum if the level is greater than 3\n- 10 cards mininum if the level
+    is grater than 5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
