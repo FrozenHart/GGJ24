@@ -10,25 +10,48 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    public GameObject Midle_Slider, Left_Slider, Right_Slider;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
+    public Animator Enemy_Mid_Animator, Enemy_Left_Animator, Enemy_Right_Animator;
     private Enemy enemy_mid, enemy_left, enemy_right;
+    private bool Level1=false, Level2=false, Level3=false;
     public object Midle_Slicder { get; private set; }
+    bool trade = false;
 
     // Start is called before the first frame update
     void Start()
     {
         confirmationDialog.SetActive(false);
-        Hide_All();
+        Level_type_123();
     }
-
+    private void FixedUpdate()
+    {
+        if (Level1)
+        {
+            Midle_Slider.GetComponent<Slider>().value = enemy_mid.Get_LaughPower();
+            Enemy_Mid_Animator.SetFloat("laughpower", enemy_mid.Get_LaughPower());
+        }
+        else if (Level2)
+        {
+            Left_Slider.GetComponent<Slider>().value = enemy_left.Get_LaughPower();
+            Enemy_Left_Animator.SetFloat("laughpower", enemy_left.Get_LaughPower());
+            Right_Slider.GetComponent<Slider>().value = enemy_right.Get_LaughPower();
+            Enemy_Right_Animator.SetFloat("laughpower", enemy_right.Get_LaughPower());
+        }
+        else if (Level3)
+        {
+            Left_Slider.GetComponent<Slider>().value = enemy_left.Get_LaughPower();
+            Enemy_Left_Animator.SetFloat("laughpower", enemy_left.Get_LaughPower());
+            Right_Slider.GetComponent<Slider>().value = enemy_right.Get_LaughPower();
+            Enemy_Right_Animator.SetFloat("laughpower", enemy_right.Get_LaughPower());
+            Midle_Slider.GetComponent<Slider>().value = enemy_mid.Get_LaughPower();
+            Enemy_Mid_Animator.SetFloat("laughpower", enemy_mid.Get_LaughPower());
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-      //  Midle_Slider.GetComponent<Slider>().value = enemy_mid.Get_LaughPower();
-      //  Left_Slider.GetComponent<Slider>().value = enemy_left.Get_LaughPower();
-       //  Right_Slider.GetComponent<Slider>().value = enemy_right.Get_LaughPower();
     }
 
     public void Shop_OnClick()
@@ -52,26 +75,56 @@ public class Gameplay : MonoBehaviour
     }
     private void Level_type_123()
     {
-        int enemyid = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyid];
+        Hide_All();
+        int enemyidm = new System.Random().Next(0, 12);
+        enemy_mid = GameManager.enemies[enemyidm];
+        Level1 = true;
+        Level2 = false;
+        Level3 = false;
+        Midle_Slider.SetActive(true);
+        Enemy_Mid.SetActive(true);
     }
     private void Level_type_456()
     {
-        int enemyid = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyid];
+        Hide_All();
+        int enemyidl = new System.Random().Next(0, 12);
+        int enemyidr = new System.Random().Next(0, 12);
+        enemy_left = GameManager.enemies[enemyidl];
+        enemy_right = GameManager.enemies[enemyidr];
+        Level2 = true;
+        Level1 = false;
+        Level3 = false;
+        Left_Slider.SetActive(true);
+        Right_Slider.SetActive(true);
+        Enemy_Left.SetActive(true);
+        Enemy_Right.SetActive(true);
     }
     private void Level_type_7()
     {
-        int enemyid = new System.Random().Next(0, 12);
-        enemy_mid = GameManager.enemies[enemyid];
+        Hide_All();
+        int enemyidm = new System.Random().Next(0, 12);
+        int enemyidl = new System.Random().Next(0, 12);
+        int enemyidr = new System.Random().Next(0, 12);
+        enemy_mid = GameManager.enemies[enemyidm];
+        enemy_left = GameManager.enemies[enemyidl];
+        enemy_right = GameManager.enemies[enemyidr];
+        Level3 = true;
+        Level2 = false;
+        Level1 = false;
+        Left_Slider.SetActive(true);
+        Right_Slider.SetActive(true);
+        Enemy_Left.SetActive(true);
+        Enemy_Right.SetActive(true);
+        Midle_Slider.SetActive(true);
+        Enemy_Mid.SetActive(true);
     }
     private void Hide_All()
     {
-       // Midle_Slider.SetActive(false);
-       // Left_Slider.SetActive(false);
-       // Right_Slider.SetActive(false);
-       // Enemy_Mid.SetActive(false);
-       // Enemy_Left.SetActive(false);
-       // Enemy_Right.SetActive(false);
+        Midle_Slider.SetActive(false);
+        Left_Slider.SetActive(false);
+        Right_Slider.SetActive(false);
+        Enemy_Mid.SetActive(false);
+        Enemy_Left.SetActive(false);
+        Enemy_Right.SetActive(false);
     }
 }

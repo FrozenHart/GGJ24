@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -645.00006, y: 400.00003}
+  m_AnchoredPosition: {x: -644.7, y: 399.99997}
   m_SizeDelta: {x: -1720, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267998935
@@ -759,9 +759,12 @@ MonoBehaviour:
   Midle_Slider: {fileID: 749352447}
   Left_Slider: {fileID: 267998933}
   Right_Slider: {fileID: 572493686}
-  Enemy_Mid: {fileID: 0}
-  Enemy_Left: {fileID: 0}
-  Enemy_Right: {fileID: 0}
+  Enemy_Mid: {fileID: 1470273637}
+  Enemy_Left: {fileID: 1524369903}
+  Enemy_Right: {fileID: 474093191}
+  Enemy_Mid_Animator: {fileID: 1470273640}
+  Enemy_Left_Animator: {fileID: 1524369906}
+  Enemy_Right_Animator: {fileID: 474093194}
 --- !u!1 &572493686
 GameObject:
   m_ObjectHideFlags: 0

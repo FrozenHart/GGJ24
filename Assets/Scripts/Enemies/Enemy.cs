@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Enemy 
 {
-    [SerializeField]
-    private float boringness = 0.50f;
+   
+    private float boringness ; 
     public Slider LaghBar;
 
     private Tuple<HumourType, HumourType> Likes;
@@ -27,11 +27,11 @@ public class Enemy
         {
             if ((Likes.Item1 == card_humor) || (Likes.Item2 == card_humor))
             {
-                LaughPower += 2;
+                LaughPower += 0.2f;
             }
             else if (DisLike == card_humor)
             {
-                LaughPower -= 2;
+                LaughPower -= 0.2f;
             }
         }
         boringness += LaughPower;

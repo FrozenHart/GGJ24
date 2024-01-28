@@ -7,7 +7,7 @@ public static class GameManager
     public static ShopType? currentShopType = null;
     public static int currentShopLoopFrame = 0;
     public static Player player = new Player();
-    public static List<Enemy> enemies = new List<Enemy>()
+    public static List<Enemy> enemies = new List<Enemy>() 
     {
         new Enemy(0.5f,new Tuple<HumourType, HumourType>(HumourType.Dark,HumourType.x),HumourType.Banana),
         new Enemy(0.5f,new Tuple<HumourType, HumourType>(HumourType.Intelligent,HumourType.x),HumourType.Banana),
