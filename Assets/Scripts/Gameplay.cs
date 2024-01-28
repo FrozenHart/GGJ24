@@ -16,6 +16,8 @@ public class Gameplay : MonoBehaviour
     private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23,stats1,stats2,stats3,Levelnumb,CoinCount;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
+    [SerializeField]
+    private GameObject s1l1, s1l2, s1d, s2l1, s2l2, s2d, s3l1, s3l2, s3d;
     public Animator Enemy_Mid_Animator, Enemy_Left_Animator, Enemy_Right_Animator;
     private Enemy enemy_mid, enemy_left, enemy_right;
     private Card card1, card2, card3;
@@ -128,6 +130,10 @@ public class Gameplay : MonoBehaviour
         Hide_All();
         int enemyidm = new System.Random().Next(0, 12);
         enemy_mid = DefaultGameStorage.enemyList[enemyidm];
+        stats2.SetActive(true);
+        s1d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
+        s1l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
+        s1l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
         Level1 = true;
         Level2 = false;
         Level3 = false;
@@ -141,6 +147,15 @@ public class Gameplay : MonoBehaviour
         int enemyidr = new System.Random().Next(0, 12);
         enemy_left = DefaultGameStorage.enemyList[enemyidl];
         enemy_right = DefaultGameStorage.enemyList[enemyidr];
+        stats1.SetActive(true);
+        stats3.SetActive(true);
+
+        s2d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
+        s2l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
+        s2l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
+        s3d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
+        s3l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
+        s3l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
         Level2 = true;
         Level1 = false;
         Level3 = false;
@@ -158,6 +173,19 @@ public class Gameplay : MonoBehaviour
         enemy_mid = DefaultGameStorage.enemyList[enemyidm];
         enemy_left = DefaultGameStorage.enemyList[enemyidl];
         enemy_right = DefaultGameStorage.enemyList[enemyidr];
+        stats1.SetActive(true);
+        stats3.SetActive(true);
+        stats2.SetActive(true);
+
+        s1d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
+        s1l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
+        s1l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
+        s2d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
+        s2l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
+        s2l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
+        s3d.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_DisLikes());
+        s3l1.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item1);
+        s3l2.GetComponent<Image>().sprite = Get_Sprite(enemy_mid.Get_Likes().Item2);
         Level3 = true;
         Level2 = false;
         Level1 = false;
@@ -580,5 +608,44 @@ public class Gameplay : MonoBehaviour
     {
         cardDialog.SetActive(false);
         waitForConfirm = false;
+    }
+    private Sprite Get_Sprite(HumourType t)
+    {
+        if(t== HumourType.A)
+        {
+            return A;
+        }
+        else if(t== HumourType.B)
+        {
+            return B;
+        }
+        else if(t == HumourType.C)
+        {
+            return C;
+        }
+        else
+        {
+            return D;
+        }
+    }
+    private void Update_cards()
+    {
+        if(CardSpot_1.active == true)
+        {
+            CardSpot_1.GetComponent<Image>().sprite = card1.Get_Image();
+        }
+        if (CardSpot_2.active == true)
+        {
+            CardSpot_1.GetComponent<Image>().sprite = card1.Get_Image();
+        }
+        if (CardSpot_3.active == true)
+        {
+            CardSpot_12.GetComponent<Image>().sprite = card1.Get_Image();
+        }
+        if (CardSpot_23.active == true)
+        {
+            CardSpot_1.GetComponent<Image>().sprite = card1.Get_Image();
+        }
+
     }
 }

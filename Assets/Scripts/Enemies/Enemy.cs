@@ -19,7 +19,14 @@ public class Enemy
         Likes = likes;
         DisLike = disLike;
     }
-
+    public HumourType Get_DisLikes()
+    {
+        return DisLike;
+    }
+    public Tuple<HumourType, HumourType> Get_Likes()
+    {
+        return Likes;
+    }
     public void Action(Card card)
     {
         float LaughPower=card.GetLaughPower();
