@@ -22,7 +22,6 @@ public class TypeShop : MonoBehaviour
     private bool isLoaded = false;
     private int loopCount = GameManager.currentShopLoopFrame;
 
-    private List<HashSet<HumourType>> newHumour = new List<HashSet<HumourType>>();
     private List<int> costs = new List<int>() { 20, 50, 200 };
 
     // Start is called before the first frame update
@@ -184,8 +183,8 @@ public class TypeShop : MonoBehaviour
     {
         List<Card> cards = GameManager.player.GetInventory();
 
-        if (cards.Select(x => x.GetEffects() == cardType).Count() == 2)
-            return false;
+        ~//if (cards.Select(x => x.GetEffects().ElementAt(0) == cardType.ElementAt(0) && x.GetEffects().ElementAt(1) == cardType.ElementAt(1)).Count() == 2)
+            //return false;
 
         return true;
     }
