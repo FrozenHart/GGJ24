@@ -200,4 +200,13 @@ public class Gameplay : MonoBehaviour
 
     }
 
+    public void Rotate_right()
+    {
+
+    }
+
+    public void Rotate_left() 
+    {
+    
+    }
 }
