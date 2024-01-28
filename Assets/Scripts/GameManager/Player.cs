@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Player
 {
-    private int mana = 10;
+    private int mana = 200;
     private int life = 3;
     private List<Card> inventory = new List<Card>();
     private List<Card> hand = new List<Card>();
