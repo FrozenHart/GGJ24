@@ -24,7 +24,7 @@ public static class GameManager
         if (currentShopType == null)
             return cards;
 
-        foreach (Card card in DefaultGameStorage.cardList)
+        foreach (Card card in DefaultGameStorage.GameCards)
         {
             if (player.GetInventory().Contains(card) || player.GetHand().Contains(card))
                 continue;

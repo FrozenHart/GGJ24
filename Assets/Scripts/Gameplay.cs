@@ -5,30 +5,43 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System.Linq;
+using Unity.PlasticSCM.Editor.WebApi;
 
 public class Gameplay : MonoBehaviour
 {
     [SerializeField]
     private GameObject confirmationDialog;
     [SerializeField]
-    private GameObject Midle_Slider, Left_Slider, Right_Slider;
+    private GameObject Midle_Slider, Left_Slider, Right_Slider, CardSpot_1,CardSpot_2,CardSpot_3,CardSpot_12,CardSpot_23;
     [SerializeField]
     private GameObject Enemy_Mid, Enemy_Left, Enemy_Right;
     public Animator Enemy_Mid_Animator, Enemy_Left_Animator, Enemy_Right_Animator;
     private Enemy enemy_mid, enemy_left, enemy_right;
-    private Enemy curentmid,curentleft, curentright;
+    private Card card1, card2, card3;
     private bool Level1=false, Level2=false, Level3=false;
+    private int Current_Level = 0;
     public object Midle_Slicder { get; private set; }
     bool Pass = false;
     int Level = 1;
+    int index = 0;
+    public int numberofcardsrdsr;
     // Start is called before the first frame update
     void Start()
     {
         confirmationDialog.SetActive(false);
+        //temp 
+        GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[0]);
+        GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[1]);
+        GameManager.player.AddCard_ToHand(DefaultGameStorage.GameCards[2]);
+       
+
+        Set_Cards();
+        Set_Hand();
         NexLevel();
     }
     private void FixedUpdate()
     {
+        numberofcardsrdsr = GameManager.player.GetHand().Count;
         if (!GameManager.player.GetHand().Any<Card>())
         {
             if(Level1)
@@ -164,49 +177,273 @@ public class Gameplay : MonoBehaviour
         switch (Level)
         {
             case 1:
-                Level_type_123();
+                if(Current_Level == Level)
+                {
+                    enemy_mid.reset();
+                }
+                else
+                {
+                    Level_type_123();
+                }
+                Current_Level = Level;
                 break;
             case 2:
-                Level_type_123();
+                if (Current_Level == Level)
+                {
+                    enemy_mid.reset();
+                }
+                else
+                {
+                    Level_type_123();
+                }
+                Current_Level = Level;
+
                 break;
             case 3:
-                Level_type_123();
+                if (Current_Level == Level)
+                {
+                    enemy_mid.reset();
+                }
+                else
+                {
+                    Level_type_123();
+                }
+                Current_Level = Level;
+
                 break;
             case 4:
-                Level_type_456();
+                if (Current_Level == Level)
+                {
+                    enemy_left.reset();
+                    enemy_right.reset();
+                }
+                else
+                {
+                    Level_type_456();
+                }
+                Current_Level = Level;
+
                 break;
             case 5:
-                Level_type_456();
+                if (Current_Level == Level)
+                {
+                    enemy_left.reset();
+                    enemy_right.reset();
+                }
+                else
+                {
+                    Level_type_456(); 
+                }
+                Current_Level = Level;
+
                 break;
             case 6:
-                Level_type_456();
+                if (Current_Level == Level)
+                {
+                    enemy_left.reset();
+                    enemy_right.reset();
+                }
+                else
+                {
+                    Level_type_456();
+                }
+                Current_Level = Level;
+
                 break;
             case 7:
-                Level_type_7();
+                if (Current_Level == Level)
+                {
+                    enemy_left.reset();
+                    enemy_right.reset();
+                    enemy_mid.reset();
+                }
+                else 
+                {
+                    Level_type_7();
+                }
                 break;
         }
     }
 
     public void Select_Card_1()
     {
-
+        GameManager.player.RemoveCardFromHand(card1);
+        index--;
+        if(Level1)
+        {
+            enemy_mid.Action(card1);
+        }
+        else if(Level2)
+        {
+            enemy_left.Action(card1);
+            enemy_right.Action(card1);
+        }
+        else
+        {
+            enemy_mid.Action(card1);
+            enemy_left.Action(card1);
+            enemy_right.Action(card1);
+        }
+        Set_Cards();
     }
     public void Select_Card_2()
     {
-
+        GameManager.player.RemoveCardFromHand(card2);
+        index--;
+        if (Level1)
+        {
+            enemy_mid.Action(card2);
+        }
+        else if (Level2)
+        {
+            enemy_left.Action(card2);
+            enemy_right.Action(card2);
+        }
+        else
+        {
+            enemy_mid.Action(card2);
+            enemy_left.Action(card2);
+            enemy_right.Action(card2);
+        }
+        Set_Cards();
     }
     public void Select_Card_3()
     {
+        index--;
+        if (Level1)
+        {
+            enemy_mid.Action(card3);
+        }
+        else if (Level2)
+        {
+            enemy_left.Action(card3);
+            enemy_right.Action(card3);
+        }
+        else
+        {
+            enemy_mid.Action(card3);
+            enemy_left.Action(card3);
+            enemy_right.Action(card3);
+        }
+        GameManager.player.RemoveCardFromHand(card3);
+        Set_Cards();
+    }
 
+    public void Select_Card_12() 
+    {
+        GameManager.player.RemoveCardFromHand(card1);
+        index--;
+        if (Level1)
+        {
+            enemy_mid.Action(card1);
+        }
+        else if (Level2)
+        {
+            enemy_left.Action(card1);
+            enemy_right.Action(card1);
+        }
+        else
+        {
+            enemy_mid.Action(card1);
+            enemy_left.Action(card1);
+            enemy_right.Action(card1);
+        }
+        Set_Cards();
+    }
+    public void Select_Card_23() {
+        GameManager.player.RemoveCardFromHand(card2);
+        index--;
+        if (Level1)
+        {
+            enemy_mid.Action(card2);
+        }
+        else if (Level2)
+        {
+            enemy_left.Action(card2);
+            enemy_right.Action(card2);
+        }
+        else
+        {
+            enemy_mid.Action(card2);
+            enemy_left.Action(card2);
+            enemy_right.Action(card2);
+        }
+        Set_Cards();
     }
 
     public void Rotate_right()
     {
-
+        card3 = card2;
+        card2 = card1;
+        if(index+1>GameManager.player.GetHand().Count-1)
+        {
+            index++;
+        }
+        else
+        {
+            index= 0;
+        }
+        card1 = GameManager.player.GetHand()[index];
     }
 
     public void Rotate_left() 
     {
-    
+        card1 = card2;
+        card2 = card3;
+        if (index - 1 > 0)
+        {
+            index--;
+        }
+        else
+        {
+            index = GameManager.player.GetHand().Count-1;
+        }
+        card3 = GameManager.player.GetHand()[index];
+    }
+
+    public void Set_Hand()
+    {
+        Player player = GameManager.player;
+        card1 = player.GetHand()[0];
+        card2 = player.GetHand()[1];
+        card3 = player.GetHand()[2];
+        index = 2;
+    }
+
+    private void Set_Cards()
+    {
+        int numb_of_cards = GameManager.player.GetHand().Count;
+        if(numb_of_cards==2)
+        {
+            Hide_Cards();
+            CardSpot_12.SetActive(true);
+            CardSpot_23.SetActive(true);
+        }
+        else if(numb_of_cards == 1)
+        {
+            Hide_Cards();
+            CardSpot_2.SetActive(true);
+        }
+        else if(numb_of_cards == 0)
+        {
+            return;
+        }
+        else
+        {
+            Hide_Cards();
+            CardSpot_1.SetActive(true);
+            CardSpot_2.SetActive(true);
+            CardSpot_3.SetActive(true);
+        }
+    }
+
+    private void Hide_Cards()
+    {
+        CardSpot_1.SetActive(false);
+        CardSpot_2.SetActive(false);
+        CardSpot_3.SetActive(false);
+        CardSpot_12.SetActive(false);
+        CardSpot_23.SetActive(false);
+
     }
 }
